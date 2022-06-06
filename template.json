@@ -1,0 +1,41 @@
+{
+    "documents": {
+        "title":{
+            "data":"",
+            "type":"text/image",
+            "styles": {
+                "is_bold": true,
+                "is_underlined": true,
+                "lspace": 1.25,
+                "rspace": 1.25,
+                "font": "Arial",
+                "fontsize": 15
+            }
+        }
+    }
+}
+
+{
+    "title" : {
+        "text": "Gender equality",
+        "styles": {
+            "is_bold": true
+        }
+    },
+    "subtitle": {
+
+    },
+    "img": {
+        "src": "sakldfjalkfsj",
+        "caption": "this is a catpion",
+        "styles": {
+            "width": ""
+        }
+    },
+    "p": {
+        "text": "aslkdfjlaskfjd",
+        "styles": {
+
+        }
+    }
+}

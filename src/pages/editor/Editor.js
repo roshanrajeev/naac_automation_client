@@ -44,7 +44,13 @@ class Editor extends Component {
     handleBlockDelete(currentBlock) {
         const previousBlock = currentBlock.ref.previousElementSibling
         if(previousBlock) {
-
+            const blocks = this.state.blocks
+            const idx = blocks.map(b => b.id).indexOf(currentBlock.id)
+            const updatedBlocks = [...blocks]
+            updatedBlocks.splice(idx, 1)
+            this.setState({blocks: updatedBlocks}, () => {
+                previousBlock.focus()
+            })
         }
     }
 
