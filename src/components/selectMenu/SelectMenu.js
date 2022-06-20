@@ -1,26 +1,11 @@
 import React, { Component } from 'react'
 import styles from "./SelectMenu.module.scss"
 import { matchSorter } from 'match-sorter'
+import tagData from '../../data/tags'
 
 class SelectMenu extends Component {
   static defaultProps = {
-    allowedTags: [
-      {
-        id: "heading-1",
-        tag: "h1",
-        label: "Heading 1"
-      },
-      {
-        id: "heading-2",
-        tag: "h2",
-        label: "Heading 2"
-      },
-      {
-        id: "paragraph",
-        tag: "p",
-        label: "Paragraph"
-      }
-    ]
+    allowedTags: tagData
   }
 
   constructor(props) {

@@ -176,6 +176,7 @@ class EditableBlock extends Component {
                     onKeyDown={this.handleKeyDown}
                     onKeyUp={this.handleKeyUp}
                     innerRef={this.contentEditable}
+                    style={this.props.styles}
                 />
             </>
         )

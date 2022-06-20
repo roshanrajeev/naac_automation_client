@@ -4,6 +4,7 @@ import CreatableSelect from 'react-select/creatable'
 import uid from '../../utils/uid'
 import EditableBlock from '../../components/editableBlock/EditableBlock'
 import setCaretToEnd from "../../utils/setCaretToEnd"
+import tagData from '../../data/tags'
 
 import styles from "./Editor.module.scss"
 
@@ -20,8 +21,8 @@ class Editor extends Component {
         this.handlePageUpdate = this.handlePageUpdate.bind(this)
 
         this.fontFamilies = [
-            { value: 'arial', label: 'Arial' },
-            { value: 'times-new-roman', label: 'Times New Roman' }
+            { value: 'Poppins', label: 'Poppins' },
+            { value: 'Lato', label: 'Lato' }
         ]
 
         this.fontSizes = [
@@ -95,6 +96,9 @@ class Editor extends Component {
     =================================*/
 
     render() {
+        let tags = {}
+        tagData.forEach(t => tags[t.tag] = t.styles)
+
         return (
             <div className={styles.editor}>
                 <div className="container">
@@ -107,6 +111,7 @@ class Editor extends Component {
                                         id={block.id}
                                         tag={block.tag}
                                         html={block.html}
+                                        styles={tags[block.tag]}
                                         updatePage={this.handlePageUpdate}
                                         addBlock={this.handleBlockAdd}
                                         deleteBlock={this.handleBlockDelete}
@@ -193,6 +198,8 @@ class Editor extends Component {
                                     </div>
                                 </div>
                             </div>
+
+                            <button>Download Doc</button>
                         </div>
                     </div>
                 </div>
