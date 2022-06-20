@@ -1,0 +1,17 @@
+$color-orange: #FF3D00;
+$color-white: #FFF;
+$color-black: #000;
+$color-grey-light: #E5E5E5;
+$color-grey-medium: #C4C4C4;
+
+@mixin desktop {
+    @media (min-width: 992px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}

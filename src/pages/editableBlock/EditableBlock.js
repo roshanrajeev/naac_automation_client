@@ -72,6 +72,7 @@ class EditableBlock extends Component {
         if(e.key === "Backspace" && !this.state.html) {
             e.preventDefault()
             this.props.deleteBlock({
+                id: this.props.id,
                 ref: this.contentEditable.current
             })
         }

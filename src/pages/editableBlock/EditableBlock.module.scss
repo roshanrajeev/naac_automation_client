@@ -1,5 +1,9 @@
-.block:empty::before {
-    content: attr(data-placeholder);
-    color: rgba(0, 0, 0, 0.251);  
-    cursor: text;
+.block {
+    outline: none;
+
+    &:empty::before {
+        content: attr(data-placeholder);
+        color: rgba(0, 0, 0, 0.251);  
+        cursor: text;
+    }
 }
