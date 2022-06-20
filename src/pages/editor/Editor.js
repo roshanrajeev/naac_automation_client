@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 import uid from '../../utils/uid'
-import EditableBlock from '../editableBlock/EditableBlock'
+import EditableBlock from '../../components/editableBlock/EditableBlock'
+import setCaretToEnd from "../../utils/setCaretToEnd"
 
 import styles from "./Editor.module.scss"
 
@@ -45,17 +46,6 @@ class Editor extends Component {
     /*=================================
     HELPER FUNCTIONS
     =================================*/
-    
-    setCaretToEnd = (element) => {
-        const range = document.createRange()
-        const selection = window.getSelection()
-        range.selectNodeContents(element)
-        range.collapse(false)
-        selection.removeAllRanges()
-        selection.addRange(range)
-        element.focus()
-    }
-
 
 
     /*=================================
@@ -95,7 +85,7 @@ class Editor extends Component {
             updatedBlocks.splice(idx, 1)
             this.setState({blocks: updatedBlocks}, () => {
                 previousBlock.focus()
-                this.setCaretToEnd(previousBlock)
+                setCaretToEnd(previousBlock)
             })
         }
     }
