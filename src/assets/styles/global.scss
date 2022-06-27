@@ -7,13 +7,13 @@
 }
 
 html {
-    // font-size: 10px;
+    font-size: 10px;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: mixin.$color-pink;
 }
-
 
 .container {
     padding: 0 1rem;
@@ -24,6 +24,6 @@ body {
     }
 
     @include mixin.desktop {
-        max-width: 72rem;
+        max-width: 110rem;
     }
 }

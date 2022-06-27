@@ -3,6 +3,8 @@ $color-white: #FFF;
 $color-black: #000;
 $color-grey-light: #E5E5E5;
 $color-grey-medium: #C4C4C4;
+$color-pink: #E0D3DE61;
+$color-black-medium: #000000AD;
 
 @mixin desktop {
     @media (min-width: 992px) {
