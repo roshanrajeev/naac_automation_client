@@ -1,31 +1,52 @@
 import React from 'react'
 import styles from './Register.module.scss'
+import bgImage from '../../assets/img/bg-register.jpg'
+import {Link} from 'react-router-dom'
 
 class Register extends React.Component {
     render() {
         return (
-            <div className="container">
-            <div className="register-box">
-                <h2 className="register-title">Register</h2>
-                <h4 className="register-subtitle">Already registered? <a href="login.html">Login</a></h4>
-                <div className="register-form">
-                <form className={styles.form}>
-                <label>First Name</label>
-                <input type="text"/>
-                <label>Last Name</label>
-                <input type="text"/>
-                <label>Email Address</label>
-                <input type="email"/>
-                <label>Password</label>
-                <input type="password"/>
-                <p>Forgot Password?</p>
-                <button>Login</button>
-                <p>Don't have an account? <Link to='/register'>Register</Link></p>
-            </form>
-                </div>
+            <div className={styles.container}>
+            <div className={styles.register_box}>
+                <h2 className={styles.register_title}>Register</h2>
+                <h4 className={styles.register_subtitle}>Already registered?<Link to='/login'>Login</Link></h4>
+                {/* <div className={styles.register_form}> */}
+                    <form className={styles.form}>
+                        <div className={styles.nameinput}>
+                            <div>
+                                <label className={styles.name}>First Name</label>
+                                <input className={styles.inputstyle} type="text"/>
+                            </div>
+                            {/* <br></br> */}
+                            <div>
+                                <label className={styles.name}>Last Name</label>
+                                <input className={styles.inputstyle} type="text"/>
+                            </div>
+                        </div>
+                        {/* <br></br> */}
+                        <label className={styles.name}>Email Address</label>
+                        <input className={styles.inputstyle} type="email"/>
+                        {/* <br></br> */}
+                        <label className={styles.name}>Institution</label>
+                        <input className={styles.inputstyle} type="text"/>
+                        {/* <br></br> */}
+                        <label className={styles.name}>Designation</label>
+                        <input className={styles.inputstyle} type="text"/>
+                        <label className={styles.name}>Department</label>
+                        <input className={styles.inputstyle} type="text"/>
+                        {/* <br></br> */}
+                        <label className={styles.name}>Password</label>
+                        <input className={styles.inputstyle} type="password"/>
+                        {/* <br></br> */}
+                        <div className={styles.register_submit}>
+                        <button className={styles.register_button}>Register</button>
+                        </div>
+                    </form>
+                {/* </div> */}
             </div>
-            <div class="sidebox">
-                <img class="sideimg" src="img/4063097.jpg"/>
+            <div className={styles.sidebox}>
+                <img className={styles.sideimg} src={bgImage} alt=""/>
+                <h6 className={styles.create_account}>Create an Account</h6>
             </div>
         </div>
         )
