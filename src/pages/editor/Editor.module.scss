@@ -1,4 +1,4 @@
-@use "../../styles/mixins.scss" as mixin;
+@use "../../assets/styles/mixins.scss" as mixin;
 
 .editor {
 }
@@ -8,14 +8,14 @@
 }
 
 .blocksContainer {
-    max-width: 50rem;
+    // max-width: 50rem;
     flex-grow: 1;
 }
 
 .controls {
     // background-color: ;
     border: 1px solid mixin.$color-grey-medium;
-    width: 20rem;
+    // width: 20rem;
     padding: 1rem;
 
     .controlWrapper {
@@ -26,7 +26,7 @@
         }
 
         .title {
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             font-weight: 500;
             margin-bottom: 1rem;
         }
@@ -34,6 +34,7 @@
         .typeContainer {
             &:not(:last-child) {
                 margin-bottom: 1rem;
+                // margin-right: 1rem;
             }
         }
 
@@ -43,7 +44,7 @@
         }
 
         .type {
-            font-size: .8rem;
+            font-size: 1.2rem;
             font-weight: 400;
             margin-bottom: 5px;
         }

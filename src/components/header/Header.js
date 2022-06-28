@@ -4,14 +4,18 @@ import styles from './Header.module.scss'
 class Header extends Component {
   render() {
     return (
-        <div className={styles.header}>
-            <form>
-                <input type="text" placeholder='Search'/>
+        <div className="container">
+          <div className={styles.container}>
+            <form className={styles.form}>
+                <input className={styles.input} type="text" placeholder='Search'/>
             </form>
-            <div>
-              <p>Full name</p>
-              <img src=""/>
+            <div className={styles.user}>
+              <p className={styles.name}>Full name</p>
+              <span className={styles.imageContainer}>
+                <img className={styles.image} src="https://randomuser.me/api/portraits/men/2.jpg"/>
+              </span>
             </div>
+          </div>
         </div>
     )
   }
