@@ -13,30 +13,35 @@ const initialBlock = {id: uid(), html: "", tag: "h1"}
 class Editor extends Component {
     constructor(props) {
         super(props)
+
         this.state = {
-            blocks: [initialBlock]
+            blocks: [initialBlock],
+            tagStyles: tagData
         }
+
         this.handleBlockAdd = this.handleBlockAdd.bind(this)
         this.handleBlockDelete = this.handleBlockDelete.bind(this)
         this.handlePageUpdate = this.handlePageUpdate.bind(this)
-
-        this.fontFamilies = [
+        this.handleOptionChange = this.handleOptionChange.bind(this)
+    
+        this.fontFamily = [
             { value: 'Poppins', label: 'Poppins' },
             { value: 'Lato', label: 'Lato' }
         ]
-
-        this.fontSizes = [
-            { value: '8', label: '8' },
-            { value: '9', label: '9' },
-            { value: '16', label: '16' }
+    
+        this.fontSize = [
+            { value: '8pt', label: '8' },
+            { value: '9pt', label: '9' },
+            { value: '16pt', label: '16' },
+            { value: '20pt', label: '20' }
         ]
-
-        this.fontWeights = [
+    
+        this.fontWeight = [
             { value: '400', label: 'Regular' },
             { value: '500', label: 'Bold' },
             { value: '700', label: 'Dark' }
         ]
-
+    
         this.textAlign = [
             { value: 'left', label: 'Left' },
             { value: 'center', label: 'Center' },
@@ -48,6 +53,9 @@ class Editor extends Component {
     HELPER FUNCTIONS
     =================================*/
 
+    getStyle(style, list) {
+        return list.find(item => item.value == style)
+    }
 
     /*=================================
     HANDLER FUNCTIONS
@@ -91,14 +99,22 @@ class Editor extends Component {
         }
     }
 
+    handleOptionChange(newVal, property) {
+        console.log("changed")
+        this.setState(prev => {
+            const tagStyles = this.state.tagStyles
+            return {
+                ...prev,
+                tagStyles
+            }
+        })
+    }
+
     /*=================================
     RENDER FUNCTION
     =================================*/
 
     render() {
-        let tags = {}
-        tagData.forEach(t => tags[t.tag] = t.styles)
-
         return (
             <div className={styles.editor}>
                 <div className="container">
@@ -111,7 +127,7 @@ class Editor extends Component {
                                         id={block.id}
                                         tag={block.tag}
                                         html={block.html}
-                                        styles={tags[block.tag]}
+                                        styles={tagData[block.tag].styles}
                                         updatePage={this.handlePageUpdate}
                                         addBlock={this.handleBlockAdd}
                                         deleteBlock={this.handleBlockDelete}
@@ -125,28 +141,31 @@ class Editor extends Component {
                                 <h1 className={styles.title}>Heading 1</h1>
                                 <div className={styles.typeContainer}>
                                     <h2 className={styles.type}>Font Family</h2>
-                                    <Select 
-                                        isSearchable={true} 
-                                        className={styles.select} 
-                                        options={this.fontFamilies} 
-                                        defaultValue={this.fontFamilies[0]}
+                                    <Select
+                                        isSearchable={true}
+                                        className={styles.select}
+                                        options={this.fontFamily}
+                                        defaultValue={this.getStyle(tagData["h1"].styles.fontFamily, this.fontFamily)}
+                                        onChange={(e) => this.handleOptionChange(e, "fontFamily")}
                                     />
                                 </div>
                                 <div className={styles.typeContainerRow}>
                                     <div className={styles.typeContainer}>
                                         <h2 className={styles.type}>Font Size</h2>
-                                        <CreatableSelect 
-                                            className={styles.select} 
-                                            options={this.fontSizes}
-                                            defaultValue={this.fontSizes[0]}
+                                        <CreatableSelect
+                                            className={styles.select}
+                                            options={this.fontSize}
+                                            defaultValue={this.getStyle(tagData["h1"].styles.fontSize, this.fontSize)}
+                                            onChange={this.handleOptionChange}
                                         />
                                     </div>
                                     <div className={styles.typeContainer}>
                                         <h2 className={styles.type}>Font Weight</h2>
                                         <CreatableSelect 
-                                            className={styles.select} 
-                                            options={this.fontWeights}
-                                            defaultValue={this.fontWeights[0]}
+                                            className={styles.select}
+                                            options={this.fontWeight}
+                                            defaultValue={this.getStyle(tagData["h1"].styles.fontWeight, this.fontWeight)}
+                                            onChange={this.handleOptionChange}
                                         />
                                     </div>
                                     <div className={styles.typeContainer}>
@@ -154,7 +173,8 @@ class Editor extends Component {
                                         <CreatableSelect 
                                             className={styles.select} 
                                             options={this.textAlign}
-                                            defaultValue={this.textAlign[0]}
+                                            defaultValue={this.getStyle(tagData["h1"].styles.textAlign, this.textAlign)}
+                                            onChange={this.handleOptionChange}
                                         />
                                     </div>
                                 </div>
@@ -168,7 +188,7 @@ class Editor extends Component {
                                         isSearchable={true} 
                                         className={styles.select} 
                                         options={this.fontFamilies} 
-                                        defaultValue={this.fontFamilies[0]}
+                                        defaultValue={this.fontFamily[0]}
                                     />
                                 </div>
                                 <div className={styles.typeContainerRow}>
@@ -176,16 +196,16 @@ class Editor extends Component {
                                         <h2 className={styles.type}>Font Size</h2>
                                         <CreatableSelect 
                                             className={styles.select} 
-                                            options={this.fontSizes}
-                                            defaultValue={this.fontSizes[0]}
+                                            options={this.fontSize}
+                                            defaultValue={this.fontSize[0]}
                                         />
                                     </div>
                                     <div className={styles.typeContainer}>
                                         <h2 className={styles.type}>Font Weight</h2>
                                         <CreatableSelect 
                                             className={styles.select} 
-                                            options={this.fontWeights}
-                                            defaultValue={this.fontWeights[0]}
+                                            options={this.fontWeight}
+                                            defaultValue={this.fontWeight[0]}
                                         />
                                     </div>
                                     <div className={styles.typeContainer}>
