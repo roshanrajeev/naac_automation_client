@@ -16,7 +16,7 @@ class Editor extends Component {
 
         this.state = {
             blocks: [initialBlock],
-            tagStyles: tagData
+            tagData: tagData
         }
 
         this.handleBlockAdd = this.handleBlockAdd.bind(this)
@@ -99,14 +99,25 @@ class Editor extends Component {
         }
     }
 
-    handleOptionChange(newVal, property) {
-        console.log("changed")
+    handleOptionChange(newVal, property, tag) {
+        console.log("handle option change")
         this.setState(prev => {
-            const tagStyles = this.state.tagStyles
+            const tagData = prev.tagData
             return {
                 ...prev,
-                tagStyles
+                tagData: {
+                    ...tagData,
+                    [tag]: {
+                        ...tagData[tag],
+                        styles: {
+                            ...tagData[tag].styles,
+                            [property]: newVal.value
+                        }
+                    }
+                }
             }
+        }, () => {
+            console.log("option changed!");
         })
     }
 
@@ -127,7 +138,7 @@ class Editor extends Component {
                                         id={block.id}
                                         tag={block.tag}
                                         html={block.html}
-                                        styles={tagData[block.tag].styles}
+                                        styles={this.state.tagData[block.tag].styles}
                                         updatePage={this.handlePageUpdate}
                                         addBlock={this.handleBlockAdd}
                                         deleteBlock={this.handleBlockDelete}
@@ -146,7 +157,7 @@ class Editor extends Component {
                                         className={styles.select}
                                         options={this.fontFamily}
                                         defaultValue={this.getStyle(tagData["h1"].styles.fontFamily, this.fontFamily)}
-                                        onChange={(e) => this.handleOptionChange(e, "fontFamily")}
+                                        onChange={(e) => this.handleOptionChange(e, "fontFamily", "h1")}
                                     />
                                 </div>
                                 <div className={styles.typeContainerRow}>
@@ -156,7 +167,7 @@ class Editor extends Component {
                                             className={styles.select}
                                             options={this.fontSize}
                                             defaultValue={this.getStyle(tagData["h1"].styles.fontSize, this.fontSize)}
-                                            onChange={this.handleOptionChange}
+                                            onChange={(e) => this.handleOptionChange(e, "fontSize", "h1")}
                                         />
                                     </div>
                                     <div className={styles.typeContainer}>
@@ -165,7 +176,7 @@ class Editor extends Component {
                                             className={styles.select}
                                             options={this.fontWeight}
                                             defaultValue={this.getStyle(tagData["h1"].styles.fontWeight, this.fontWeight)}
-                                            onChange={this.handleOptionChange}
+                                            onChange={(e) => this.handleOptionChange(e, "fontWeight", "h1")}
                                         />
                                     </div>
                                     <div className={styles.typeContainer}>
@@ -174,7 +185,7 @@ class Editor extends Component {
                                             className={styles.select} 
                                             options={this.textAlign}
                                             defaultValue={this.getStyle(tagData["h1"].styles.textAlign, this.textAlign)}
-                                            onChange={this.handleOptionChange}
+                                            onChange={(e) => this.handleOptionChange(e, "textAlign", "h1")}
                                         />
                                     </div>
                                 </div>
@@ -189,6 +200,7 @@ class Editor extends Component {
                                         className={styles.select} 
                                         options={this.fontFamilies} 
                                         defaultValue={this.fontFamily[0]}
+                                        onChange={(e) => this.handleOptionChange(e, "fontFamily", "p")}
                                     />
                                 </div>
                                 <div className={styles.typeContainerRow}>
@@ -198,6 +210,7 @@ class Editor extends Component {
                                             className={styles.select} 
                                             options={this.fontSize}
                                             defaultValue={this.fontSize[0]}
+                                            onChange={(e) => this.handleOptionChange(e, "fontSize", "p")}
                                         />
                                     </div>
                                     <div className={styles.typeContainer}>
@@ -206,6 +219,7 @@ class Editor extends Component {
                                             className={styles.select} 
                                             options={this.fontWeight}
                                             defaultValue={this.fontWeight[0]}
+                                            onChange={(e) => this.handleOptionChange(e, "fontWeight", "p")}
                                         />
                                     </div>
                                     <div className={styles.typeContainer}>
@@ -214,6 +228,7 @@ class Editor extends Component {
                                             className={styles.select} 
                                             options={this.textAlign}
                                             defaultValue={this.textAlign[0]}
+                                            onChange={(e) => this.handleOptionChange(e, "textAlign", "p")}
                                         />
                                     </div>
                                 </div>

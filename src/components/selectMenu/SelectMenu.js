@@ -7,12 +7,17 @@ class SelectMenu extends Component {
   static defaultProps = {
     allowedTags: tagData
   }
-
+  
+  
   constructor(props) {
     super(props)
+    let items = []
+    Object.keys(this.props.allowedTags).map(tag => {
+      items.push(this.props.allowedTags[tag]);
+    })
     this.state = {
       command: "",
-      items: this.props.allowedTags,
+      items,
       selectedItem: 0
     }
 
@@ -55,28 +60,27 @@ class SelectMenu extends Component {
         this.props.onSelect(items[selected].tag)
         this.props.close()
         break;
-
-        case "Backspace":
-          if (!command) this.props.close();
-          this.setState({ command: command.substring(0, command.length - 1) });
-          break;
-        case "ArrowUp":
-          e.preventDefault();
-          prevSelected = selected === 0 ? items.length - 1 : selected - 1;
-          this.setState({ selectedItem: prevSelected });
-          break;
-        case "ArrowDown":
-          e.preventDefault()
-          nextSelected = selected === items.length - 1 ? 0 : selected + 1
-          this.setState({selectedItem: nextSelected})
-        case "Tab":
-          e.preventDefault();
-          nextSelected = selected === items.length - 1 ? 0 : selected + 1;
-          this.setState({ selectedItem: nextSelected });
-          break;
-        default:
-          this.setState({ command: this.state.command + e.key });
-          break;
+      case "Backspace":
+        if (!command) this.props.close();
+        this.setState({ command: command.substring(0, command.length - 1) });
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        prevSelected = selected === 0 ? items.length - 1 : selected - 1;
+        this.setState({ selectedItem: prevSelected });
+        break;
+      case "ArrowDown":
+        e.preventDefault()
+        nextSelected = selected === items.length - 1 ? 0 : selected + 1
+        this.setState({selectedItem: nextSelected})
+      case "Tab":
+        e.preventDefault();
+        nextSelected = selected === items.length - 1 ? 0 : selected + 1;
+        this.setState({ selectedItem: nextSelected });
+        break;
+      default:
+        this.setState({ command: this.state.command + e.key });
+        break;
     }
   }
 

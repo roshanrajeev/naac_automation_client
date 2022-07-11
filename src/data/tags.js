@@ -2,6 +2,7 @@ const tags = {
     "h1": {
       id: "heading-1",
       label: "Heading 1",
+      tag: "h1",
       styles: {
         fontFamily: "Poppins",
         fontSize: "20pt",
@@ -12,6 +13,7 @@ const tags = {
     "h2": {
       id: "heading-2",
       label: "Heading 2",
+      tag: "h2",
       styles: {
         fontFamily: "Poppins",
         fontSize: "16pt",
@@ -22,6 +24,7 @@ const tags = {
     "p": {
       id: "paragraph",
       label: "Paragraph",
+      tag: "p",
       styles: {
         fontFamily: "Poppins",
         fontSize: "11pt",
