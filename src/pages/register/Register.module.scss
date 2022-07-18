@@ -5,6 +5,7 @@
 
 .register_box{
     padding: 10px 40px;
+    width:60%;
 }
 
 .register_text{
@@ -14,7 +15,7 @@
     font-size: 24px;
     line-height: 29px;
     color: #0C0D1C;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .name{
@@ -29,11 +30,6 @@
 
 .lastname{
     flex-grow: 1;
-}
-
-.register_form{
-    padding: 0px;
-    gap: 30px;
 }
 
 .label{
@@ -52,8 +48,47 @@
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 4px;
-    width: 30%;
-    height: 30px;
-    margin-bottom: 20px;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 30px;
     margin-top: 10px;
+}
+
+.submit_button{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 18px 43px;
+    background: #000000;
+    border-radius: 4px;
+    color: white;
+    margin-top: 25px;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.inputstyle::placeholder {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.already_registered{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}
+
+.bottom{
+    display: flex;
 }

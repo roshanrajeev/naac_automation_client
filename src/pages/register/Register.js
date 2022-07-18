@@ -13,24 +13,24 @@ class Register extends React.Component {
                         <div className={styles.name}>
                             <div className={styles.firstname}>
                                 <label className={styles.label}>First Name</label>
-                                <input className={styles.inputstyle} type="text"/>
+                                <input className={styles.inputstyle} type="text" placeholder='Enter Firstname'/>
                             </div>
                             <div className={styles.lastname}>
                                 <label className={styles.label}>Last Name</label>
-                                <input className={styles.inputstyle} type="text"/>
+                                <input className={styles.inputstyle} type="text" placeholder='Enter Lastname'/>
                             </div>
                         </div>
                         {/* Email */}
                         <label className={styles.label}>Email</label>
-                        <input className={styles.inputstyle} type="email"/>
+                        <input className={styles.inputstyle} type="email" placeholder='Enter Email'/>
                         {/* Password */}
                         <label className={styles.label}>Password</label>
-                        <input className={styles.inputstyle} type="password"/>
+                        <input className={styles.inputstyle} type="password" placeholder='Enter Password'/>
                         {/* Confirm Password */}
                         <label className={styles.label}>Confirm Password</label>
-                        <input className={styles.inputstyle} type="password"/>
+                        <input className={styles.inputstyle} type="password" placeholder='Re-enter Password'/>
+                        <button className={styles.submit_button} type='submit'>Submit</button>
                     </form>
-                    <button className={styles.submit_button} type='submit'></button>
                 </div>
             </div>
         )
