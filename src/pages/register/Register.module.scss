@@ -1,158 +1,59 @@
 .container {
     overflow: hidden;
+    margin: 10px;
 }
 
 .register_box{
-    align-items: center;
-    height: fit-content;
+    padding: 10px 40px;
 }
 
-@media (max-width: 802px){
-.sidebox{
-    display:none;
-    position: relative;
-    width: 40%;
-    height: 100%;
-    left: 60%;
-    top: 0px;
-    border-radius: 4px;
-}
-}
-
-@media (min-width: 802px){
-    .sidebox{
-        display:none;
-        position: relative;
-        width: 40%;
-        height: 100%;
-        left: 60%;
-        top: 0px;
-        border-radius: 4px;
-    }
-    }
-
-.sideimg{
-    width:100%;
-    height:100%;
-}
-
-.register_title{
-    position: relative;
-    // left: 35%;
+.register_text{
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 48px;
-    line-height: 58px;
-    margin-bottom: 25px;
-}
-
-.register_subtitle{
-    position: relative;
-    // height: 19px;
-    // left: 13%;
-    // top: 17%;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    color: rgb(121 95 95);
-    margin-bottom: 1rem;
-}
-
-@media(min-width:695px){
-    .form{
-        position: relative;
-        width: 50%;
-        height: 35%;
-        left: 25%;
-        //top: 28%;
-    }    
-}
-
-@media(max-width:695px){
-    .form{
-        position: relative;
-        width: 70%;
-        /* height: 35%; */
-        left: 15%;
-        top: 28%;
-        margin-top: -1rem;
-    }
+    font-size: 24px;
+    line-height: 29px;
+    color: #0C0D1C;
+    margin-bottom: 20px;
 }
 
 .name{
-        display:block;
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 19px;
+    display: flex;
+    justify-content: flex-start;
 }
 
-.inputstyle{
-    display: block;
-    border: white;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
-    background: #F0EEEE;
-    border: 1px solid rgba(82, 26, 63, 0.27);
-    border-radius: 4px;
-    height: 30px;
-    width:100%;
+.firstname{
+    flex-grow: 1;
+    margin-right: 1.5rem;
 }
 
-@media(min-width:973px) {
-    .nameinput{
-        display: flex;
-        justify-content: space-between;
-    }
+.lastname{
+    flex-grow: 1;
 }
 
+.register_form{
+    padding: 0px;
+    gap: 30px;
+}
 
-.register_button{
-    position: relative;
-    padding:8px 0;
-    background: #521A3F;
-    border-radius: 30px;
-    border:none;
+.label{
+    display:block;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: center;
-    margin: 2rem 0rem;
-    color: #FFFFFF;
-    width:100%;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
 }
 
-@media(min-width:973px){
-    .firstname{
-        flex-grow: 1;
-        margin-right: 1.5rem;
-    }
-    .lastname{
-        flex-grow: 1;
-    }
+.inputstyle{
+    display:block;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    width: 30%;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
-
-@media(min-width:695px){
-.register_box{
-  background: #FFFFFF;
-  position: relative;
-  margin: 30px 90px;
-  padding: 20px 0px;
-}
-}
-
-@media(max-width:695px){
-    .register_box{
-      background: #FFFFFF;
-      position: relative;
-    //   margin: 30px 90px;
-      height: 100%;
-      padding: 20px 0px;
-    }
-    }
