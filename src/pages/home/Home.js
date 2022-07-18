@@ -6,18 +6,33 @@ import editIcon from '../../assets/img/edit.png'
 import deleteIcon from '../../assets/img/delete.png'
 
 export class Home extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            name: "blessey"
+        }
+
+        this.someFunc = this.someFunc.bind(this)
+    }
+
+    someFunc() {
+        this.setState({name: "Roshan"})
+    }
+
   render() {
     return (
       <div className={styles.home}>
         <div className={styles.headerWrapper}>
             <Header/>
+            {this.state.name}
         </div>
         <div className='container'>
             <h1 className={styles.heading}>Documents</h1>
             <div className={styles.creiterionWrapper}>
                 <div className={styles.criterion}>
                     <h2 className={styles.title}>Criterion I: Curricular Aspects</h2>
-                    <button className={styles.button}>New +</button>
+                    <button className={styles.button} onClick={this.someFunc}>New +</button>
                 </div>
                 <div className={styles.indicator}>
                     <div className={styles.dateContainer}>
