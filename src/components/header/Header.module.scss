@@ -1,8 +1,6 @@
 @use "../../assets/styles/mixins.scss" as mixin;
 
 .container {
-    width: 80%;
-    max-width: 80%;
     border-radius: 1.2rem;
     display: flex;
     justify-content: space-between;
@@ -10,10 +8,6 @@
     color: mixin.$color-white;
     padding: 2.7rem 4.3rem;
     align-items: center;
-    position: fixed;
-    top: 3rem;
-    left: 50%;
-    transform: translate(-50%, 0);
 }
 
 .title {
@@ -29,7 +23,7 @@
 .link {
     font-size: 1.8rem;
     font-weight: 700;
-    
+
     a {
         text-decoration: none;
         color: inherit;

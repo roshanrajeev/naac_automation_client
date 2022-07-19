@@ -44,7 +44,7 @@ class Register extends React.Component {
     render() {
         return (
             <div className={styles.container}>
-                <Nav/>
+                <Nav />
                 <div className={styles.register_box}>
                     <h1 className={styles.register_text}>Register</h1>
                     <form className={styles.register_form} onSubmit={this.handleSubmit}>
