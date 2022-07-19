@@ -8,6 +8,10 @@ $color-white: #fff;
 $color-blue: #0c0d1c;
 $color-black: #000;
 
+$extra-container-space: 4.3rem;
+$header-height: 11.3rem;
+$header-space-top: 3rem;
+
 @mixin desktop {
     @media (min-width: 992px) {
         @content;
