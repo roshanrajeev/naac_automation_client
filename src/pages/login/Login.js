@@ -1,50 +1,63 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import styles from "./Login.module.scss"
-// import bgImage from '../../assets/img/bg-register.jpg'
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import styles from './Login.module.scss'
+import Nav from '../navbar/Navbar'
 
 class Login extends Component {
-    render() {
-        return (
-            <div className={styles.login}>
-                <div className={styles.contentContainer}>
-                    <form className={styles.form}>
-                        <h1 className={styles.title}>Login</h1>
-                        <p className={styles.subtitle}>
-                            Please login to your account
-                        </p>
-                        <label className={styles.name}>Email Address</label>
-                        <input className={styles.inputstyle} type="email" />
-                        <label className={styles.name}>Password</label>
-                        <input className={styles.inputstyle} type="password" />
-                        <div className={styles.subsection}>
-                            <div>
-                                <input
-                                    type="checkbox"
-                                    className={styles.square}
-                                    name="Remember Me"
-                                    value="yes"
-                                    id="remember"
-                                />
-                                <label for="remember" className={styles.rm}>
-                                    Remember me
-                                </label>
-                                <br></br>
-                            </div>
-                            <p className={styles.forgetpassword}>
-                                Forgot Password?
-                            </p>
-                        </div>
-                        <button className={styles.login_button}>Login</button>
-                    </form>
-                    <p className={styles.register}>
-                        Don't have an account?{" "}
-                        <Link to="/register">Register</Link>
-                    </p>
-                </div>
-            </div>
-        )
+
+  constructor(props){
+    super(props)
+    this.state={
+        email: "",
+        password: ""
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+}
+
+async handleSubmit(e){
+    e.preventDefault()
+
+    const result = await fetch("http://localhost:8000/login/",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify(this.state)
+    })
+    if(!result.ok){
+        console.log("Not Logined")
+        return
+    }
+    console.log("Login Successful")
+}
+
+handleChange(e){
+    this.setState({[e.target.name]:e.target.value})
+}
+
+  render() {
+    return (
+     <div className={styles.container}>
+         <Nav/>
+                <div className={styles.login_box}>
+                    <h1 className={styles.login_text}>Login</h1>
+                    <form className={styles.login_form} onSubmit={this.handleSubmit}>
+                        {/* Email */}
+                        <label className={styles.label}>Email</label>
+                        <input className={styles.inputstyle} type="email" name="email" placeholder='Enter Email' onChange={this.handleChange}/>
+                        {/* Password */}
+                        <label className={styles.label}>Password</label>
+                        <input className={styles.inputstyle} type="password" name="password" placeholder='Enter Password' onChange={this.handleChange}/>
+                        {/* Confirm Password */}
+                        <button className={styles.submit_button} type='submit'>Submit</button>
+                        {/* <Button size="medium" type="filled" color="#000">Submit</Button> */}
+                    </form>
+                </div>
+     </div>
+    )
+  }
 }
 
 export default Login

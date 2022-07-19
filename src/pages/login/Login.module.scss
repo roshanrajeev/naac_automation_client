@@ -1,106 +1,68 @@
-.contentContainer {
-    background: #ffffff;
-    position: relative;
-    padding: 4rem;
-    max-width: 500px;
-    margin: 10rem auto;
+
+.container {
+    overflow: hidden;
+    margin: 1rem;
+    padding: 0.5rem 4rem;
 }
 
-@media (min-width: 889px) {
-    .form {
-        margin-top: 1rem;
-    }
+.login_box{
+    padding: 1rem 4rem;
+    width:50%;
 }
 
-@media (max-width: 889px) {
-    .form {
-        margin-top: 1rem;
-    }
-}
-
-.title {
-    position: relative;
-    width: 175px;
-    height: 58px;
-    font-family: "Lato";
+.login_text{
+    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 48px;
-    line-height: 58px;
-    margin-bottom: 1rem;
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    color: #0C0D1C;
+    margin-bottom: 3rem;
 }
 
-.subtitle {
-    position: relative;
-    height: 19px;
-    font-family: "Lato";
+.label{
+    display:block;
+    font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    color: rgb(121 95 95);
-    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: #000000;
 }
 
-.name {
-    display: block;
-    font-family: "Lato";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
-}
-
-.inputstyle {
-    display: block;
-    border: white;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    background: #f0eeee;
-    border-radius: 4px;
-    height: 30px;
+.inputstyle{
+    display:block;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    border-radius:0.4rem;
     width: 100%;
+    height: 4rem;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
 }
 
-.square {
-    width: 15px;
-    height: 15px;
-    left: 13%;
-    top: 47%;
-    background: #521a3f;
-}
-
-.rememberme {
+.submit_button{
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1.8rem 4.3rem;
+    background: #FFAA04;
+    border-radius: 0.4rem;
+    color: black;
+    margin-top: 2.5rem;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
 }
 
-.rm {
-    margin-left: 1rem;
-}
-
-.subsection {
-    display: flex;
-    justify-content: space-between;
-}
-
-.login_button {
-    position: relative;
-    padding: 8px 0;
-    background: #521a3f;
-    border-radius: 30px;
-    border: none;
-    font-family: "Lato";
+.inputstyle::placeholder {
+    font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: center;
-    margin: 2rem 0rem;
-    color: #ffffff;
-    width: 100%;
-}
-
-.register {
-    position: relative;
-    left: 25%;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    color: rgba(0, 0, 0, 0.7);
 }
