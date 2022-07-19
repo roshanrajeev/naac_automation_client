@@ -7,7 +7,7 @@ $color-black-medium: #000000ad;
 $color-white: #fff;
 $color-blue: #0c0d1c;
 $color-black: #000;
-$color-yellow: #FFAA04;
+$color-yellow: #ffaa04;
 
 $extra-container-space: 4.3rem;
 $header-height: 11.3rem;
@@ -24,7 +24,6 @@ $header-space-top: 3rem;
         @content;
     }
 }
-
 
 :export {
     color_orange: $color-orange;

@@ -6,9 +6,7 @@ export class Select extends Component {
     }
 
     render() {
-        return (
-            <select>{this.props.children}</select>
-        )
+        return <select>{this.props.children}</select>
     }
 }
 
