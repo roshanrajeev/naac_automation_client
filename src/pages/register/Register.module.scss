@@ -1,21 +1,21 @@
 .container {
     overflow: hidden;
-    margin: 10px;
+    margin: 1rem;
 }
 
-.register_box {
-    padding: 10px 40px;
-    width: 60%;
+.register_box{
+    padding: 1rem 4rem;
+    width:60%;
 }
 
 .register_text {
     font-family: "Lato";
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
-    color: #0c0d1c;
-    margin-bottom: 30px;
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    color: #0C0D1C;
+    margin-bottom: 3rem;
 }
 
 .name {
@@ -37,46 +37,45 @@
     font-family: "Lato";
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
     color: #000000;
 }
 
 .inputstyle {
     display: block;
     box-sizing: border-box;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
+    background: #FFFFFF;
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    border-radius:0.4rem;
     width: 100%;
-    height: 40px;
-    margin-bottom: 30px;
-    margin-top: 10px;
+    height: 4rem;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
 }
 
 .submit_button {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 18px 43px;
-    background: #000000;
-    border-radius: 4px;
-    color: white;
-    margin-top: 25px;
-
-    font-family: "Lato";
+    padding: 1.8rem 4.3rem;
+    background: #FFAA04;
+    border-radius: 0.4rem;
+    color: black;
+    margin-top: 2.5rem;
+    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
 }
 
 .inputstyle::placeholder {
     font-family: "Lato";
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
     color: rgba(0, 0, 0, 0.7);
 }
 
@@ -84,8 +83,8 @@
     font-family: "Lato";
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
     color: #000000;
 }
 
