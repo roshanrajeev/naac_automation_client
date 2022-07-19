@@ -3,38 +3,38 @@
     margin: 10px;
 }
 
-.register_box{
+.register_box {
     padding: 10px 40px;
-    width:60%;
+    width: 60%;
 }
 
-.register_text{
-    font-family: 'Lato';
+.register_text {
+    font-family: "Lato";
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
-    color: #0C0D1C;
+    color: #0c0d1c;
     margin-bottom: 30px;
 }
 
-.name{
+.name {
     display: flex;
     justify-content: flex-start;
 }
 
-.firstname{
+.firstname {
     flex-grow: 1;
     margin-right: 1.5rem;
 }
 
-.lastname{
+.lastname {
     flex-grow: 1;
 }
 
-.label{
-    display:block;
-    font-family: 'Lato';
+.label {
+    display: block;
+    font-family: "Lato";
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -42,10 +42,10 @@
     color: #000000;
 }
 
-.inputstyle{
-    display:block;
+.inputstyle {
+    display: block;
     box-sizing: border-box;
-    background: #FFFFFF;
+    background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 4px;
     width: 100%;
@@ -54,7 +54,7 @@
     margin-top: 10px;
 }
 
-.submit_button{
+.submit_button {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -64,7 +64,7 @@
     color: white;
     margin-top: 25px;
 
-    font-family: 'Lato';
+    font-family: "Lato";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -72,7 +72,7 @@
 }
 
 .inputstyle::placeholder {
-    font-family: 'Lato';
+    font-family: "Lato";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -80,8 +80,8 @@
     color: rgba(0, 0, 0, 0.7);
 }
 
-.already_registered{
-    font-family: 'Lato';
+.already_registered {
+    font-family: "Lato";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -89,6 +89,6 @@
     color: #000000;
 }
 
-.bottom{
+.bottom {
     display: flex;
 }

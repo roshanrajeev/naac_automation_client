@@ -1,44 +1,44 @@
-.navbar_container{
+.navbar_container {
     overflow: hidden;
-    background: #0C0D1C;
+    background: #0c0d1c;
     border-radius: 12px;
     display: flex;
     justify-content: space-between;
-    padding:20px;
-    margin:1rem 0rem;
+    padding: 20px;
+    margin: 1rem 0rem;
 }
 
-.navbar_button{
+.navbar_button {
     float: right;
     padding: 18px 43px;
     gap: 10px;
-    border: 2px solid #FFFFFF;
+    border: 2px solid #ffffff;
     border-radius: 4px;
-    color:#FFFFFF;
+    color: #ffffff;
     margin-right: 20px;
 }
 
-.navbar_heading{
-    font-family: 'Lato';
+.navbar_heading {
+    font-family: "Lato";
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 38px;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-top: 0.5rem;
     margin-left: 10px;
 }
 
-.navbar_list{
+.navbar_list {
     list-style-type: none;
 }
 
-.navbar_button_text{
-    font-family: 'Lato';
+.navbar_button_text {
+    font-family: "Lato";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none;
 }

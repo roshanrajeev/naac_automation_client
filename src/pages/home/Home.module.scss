@@ -1,7 +1,7 @@
 @use "../../assets/styles/mixins.scss" as mixin;
 
 .headerWrapper {
-    margin-bottom: 3rem; 
+    margin-bottom: 3rem;
 }
 
 .heading {
@@ -21,7 +21,7 @@
     margin-bottom: 2rem;
     // background-color: lightblue;
     // padding: .8rem 1rem;
-    
+
     .title {
         font-size: 2.4rem;
     }
@@ -30,7 +30,7 @@
         background-color: mixin.$color-grey-medium;
         border: none;
         outline: none;
-        padding: .6rem 1rem;
+        padding: 0.6rem 1rem;
         cursor: pointer;
     }
 }
@@ -48,13 +48,12 @@
     }
 
     .icons {
-        
     }
 
     .icon {
         height: 2.8rem;
         display: inline-block;
-        margin-right: .8rem;
+        margin-right: 0.8rem;
     }
 
     .dateContainer {
