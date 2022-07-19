@@ -10,11 +10,14 @@
 
 .contentContainer {
     display: flex;
+    justify-content: space-between;
 }
 
 .editorContainer {
     flex-grow: 1;
+    max-width: 84.3rem;
 }
 
 .controlContainer {
+    max-width: 44.4rem;
 }

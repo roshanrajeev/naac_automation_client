@@ -8,11 +8,13 @@
     text-decoration: none;
     font-weight: 700;
     transition: all 100ms ease;
+    cursor: pointer;
 }
 
 .large {
     width: 100%;
     padding: 1.8rem;
+    text-align: center;
 }
 
 .medium {

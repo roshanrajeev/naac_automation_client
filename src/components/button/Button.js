@@ -37,6 +37,8 @@ export class Button extends Component {
             type = "filled",
             size = "medium",
             href = "",
+            onSubmit = () => {},
+            onClick = () => {},
         } = this.props
         const { hovered } = this.state
 
@@ -52,16 +54,37 @@ export class Button extends Component {
                     : color,
         }
 
+        // const conditionalAttr = {}
+        // if(href) conditionalAttr["to"] = href
+        // if(onSubmit) conditionalAttr["onSubmit"] = onsubmit
+        // if(onClick) conditionalAttr["onClick"] = onclick
+
+        // console.log(conditionalAttr)
         return (
-            <Link
-                className={`${styles.container} ${styles[size]} ${styles[type]}`}
-                style={style}
-                to={href}
-                onMouseEnter={this.handleMouseEnter}
-                onMouseLeave={this.handleMouseLeave}
-            >
-                {this.props.children}
-            </Link>
+            <>
+                {!href ? (
+                    <button
+                        className={`${styles.container} ${styles[size]} ${styles[type]}`}
+                        style={style}
+                        onMouseEnter={this.handleMouseEnter}
+                        onMouseLeave={this.handleMouseLeave}
+                        onSubmit={onSubmit}
+                        onClick={onClick}
+                    >
+                        {this.props.children}
+                    </button>
+                ) : (
+                    <Link
+                        className={`${styles.container} ${styles[size]} ${styles[type]}`}
+                        to={href}
+                        style={style}
+                        onMouseEnter={this.handleMouseEnter}
+                        onMouseLeave={this.handleMouseLeave}
+                    >
+                        {this.props.children}
+                    </Link>
+                )}
+            </>
         )
     }
 }
