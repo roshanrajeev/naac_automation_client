@@ -1,32 +1,33 @@
 .navbar_container{
     overflow: hidden;
     background: #0C0D1C;
-    border-radius: 12px;
+    border-radius: 1.2rem;
     display: flex;
     justify-content: space-between;
-    padding:20px;
+    align-content: center;
+    padding:2rem;
     margin:1rem 0rem;
 }
 
 .navbar_button{
     float: right;
-    padding: 18px 43px;
-    gap: 10px;
-    border: 2px solid #FFFFFF;
-    border-radius: 4px;
+    padding: 1.8rem 4.3rem;
+    gap: 1rem;
+    border: 0.2rem solid #FFFFFF;
+    border-radius: 0.4rem;
     color:#FFFFFF;
-    margin-right: 20px;
+    margin-right: 2rem;
 }
 
 .navbar_heading{
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 32px;
-    line-height: 38px;
+    font-size: 3.2rem;
+    line-height: 3.8rem;
     color: #FFFFFF;
-    margin-top: 0.5rem;
-    margin-left: 10px;
+    margin-top: 1rem;
+    margin-left: 1rem;
 }
 
 .navbar_list{
@@ -37,8 +38,8 @@
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
     color: #FFFFFF;
     text-decoration: none;
 }
