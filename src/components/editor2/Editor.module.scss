@@ -4,6 +4,20 @@
 
 }
 
+.inputContainer {
+}
+
 .section {
     margin: 4.5rem 0;
+}
+
+.addDelButtonsContainer {
+    margin-top: 3.5rem;
+    display: flex;
+
+    .button {
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
 }

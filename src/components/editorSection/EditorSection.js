@@ -16,7 +16,7 @@ export class EditorSection extends Component {
         super(props)
 
         this.state = {
-            sectionActive: true
+            sectionActive: false
         }
 
         this.handleSectionBarClick = this.handleSectionBarClick.bind(this)
@@ -50,8 +50,8 @@ export class EditorSection extends Component {
                         <h1 className={styles.name}>Section Title</h1>
                     </div>
                     <div className={styles.buttons}>
-                        <button>Add</button>
-                        <button>Del</button>
+                        <button onClick={() => this.props.addSection(this.props.id)}>Add</button>
+                        <button onClick={() => this.props.deleteSection(this.props.id)}>Del</button>
                     </div>
                 </div>
                 {this.state.sectionActive && <>
