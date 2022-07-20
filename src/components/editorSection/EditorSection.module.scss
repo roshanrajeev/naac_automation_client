@@ -9,10 +9,20 @@
     border-radius: 4px;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 
     .nameContainer {
         align-items: center;
         display: flex;
+
+        & :first-child {
+            margin-right: 1rem;
+            transform: translateY(1px);
+        }
+    }
+
+    .dropDownRotated {
+        transform: translateY(1px) rotateZ(180deg) !important;
     }
 
     .name {

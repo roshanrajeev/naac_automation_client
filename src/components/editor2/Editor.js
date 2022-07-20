@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+
 import EditorSection from "../editorSection/EditorSection"
 import Input from "../input/Input"
 import styles from "./Editor.module.scss"
@@ -14,6 +15,9 @@ export class Editor extends Component {
                         placeholder="Enter Heading"
                     />
                 </div>
+                <section className={styles.section}>
+                    <EditorSection />
+                </section>
                 <section className={styles.section}>
                     <EditorSection />
                 </section>
