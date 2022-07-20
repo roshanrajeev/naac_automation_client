@@ -9,6 +9,7 @@ import variables from "../../assets/styles/mixins.scss"
 import DropArrowIcon from "../../assets/img/icons/DropArrow.svg"
 import AddIcon from "../../assets/img/icons/Add.svg"
 import DeleteIcon from "../../assets/img/icons/Delete.svg"
+import EditorSectionBar from "../editorSectionBar/EditorSectionBar"
 
 export class EditorSection extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ export class EditorSection extends Component {
 
         this.state = {
             sectionActive: false,
+            heading: "",
         }
 
         this.handleSectionBarClick = this.handleSectionBarClick.bind(this)
@@ -46,36 +48,13 @@ export class EditorSection extends Component {
     render() {
         return (
             <div>
-                <div className={styles.sectionBar}>
-                    <div
-                        className={styles.nameContainer}
-                        onClick={this.handleSectionBarClick}
-                    >
-                        <img
-                            src={DropArrowIcon}
-                            className={
-                                this.state.sectionActive
-                                    ? ""
-                                    : styles.dropDownRotated
-                            }
-                        />
-                        <h1 className={styles.name}>Section Title</h1>
-                    </div>
-                    <div className={styles.buttons}>
-                        <button
-                            onClick={() => this.props.addSection(this.props.id)}
-                        >
-                            Add
-                        </button>
-                        <button
-                            onClick={() =>
-                                this.props.deleteSection(this.props.id)
-                            }
-                        >
-                            Del
-                        </button>
-                    </div>
-                </div>
+                <EditorSectionBar 
+                    active={this.state.sectionActive}
+                    addSection={this.props.addSection}
+                    deleteSection={this.props.deleteSection}
+                    toggleSection={this.handleSectionBarClick}
+                    id={this.props.id}
+                />
                 {this.state.sectionActive && (
                     <>
                         <div className={styles.inputContainer}>
@@ -83,6 +62,15 @@ export class EditorSection extends Component {
                                 type="text"
                                 label="Heading"
                                 placeholder="Enter heading"
+                                name="heading"
+                            />
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <Input
+                                type="text"
+                                label="Sub Heading"
+                                placeholder="Enter sub-heading"
+                                name="sub-heading"
                             />
                         </div>
                         <div className={styles.inputContainer}>

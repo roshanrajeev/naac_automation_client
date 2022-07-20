@@ -1,35 +1,5 @@
 @use "../../assets/styles/mixins.scss" as mixin;
 
-.sectionBar {
-    margin-bottom: 3.5rem;
-    background-color: mixin.$color-blue;
-    display: flex;
-    color: mixin.$color-white;
-    padding: 1.5rem 1.8rem;
-    border-radius: 4px;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-
-    .nameContainer {
-        align-items: center;
-        display: flex;
-
-        & :first-child {
-            margin-right: 1rem;
-            transform: translateY(1px);
-        }
-    }
-
-    .dropDownRotated {
-        transform: translateY(1px) rotateZ(180deg) !important;
-    }
-
-    .name {
-        font-size: 1.6rem;
-    }
-}
-
 .inputContainer {
     margin-bottom: 3.5rem;
 }

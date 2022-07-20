@@ -3,7 +3,7 @@ import styles from "./Input.module.scss"
 
 class Input extends Component {
     render() {
-        const { type = "text", placeholder = "", label = "Label" } = this.props
+        const { type = "text", placeholder = "", label = "Label", name = "" } = this.props
 
         return (
             <div className={styles.container}>
@@ -12,6 +12,7 @@ class Input extends Component {
                     className={styles.input}
                     type={type}
                     placeholder={placeholder}
+                    name={name}
                 />
             </div>
         )
