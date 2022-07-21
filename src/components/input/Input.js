@@ -3,7 +3,7 @@ import styles from "./Input.module.scss"
 
 class Input extends Component {
     render() {
-        const { type = "text", placeholder = "", label = "Label", name = "", onChange = () => {} } = this.props
+        const { type = "text", placeholder = "", label = "Label", name = "", onChange = () => {}, accept = "*" } = this.props
 
         return (
             <div className={styles.container}>
@@ -14,6 +14,7 @@ class Input extends Component {
                     placeholder={placeholder}
                     name={name}
                     onChange={onChange}
+                    accept={accept}
                 />
             </div>
         )

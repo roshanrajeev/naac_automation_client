@@ -1,5 +1,6 @@
 import React, { Component, createRef } from "react"
 import { v4 as uuid } from "uuid"
+import imageCompression from "browser-image-compression"
 
 import TextareaWithControls from "../textareaWithControls/TextareaWithControls"
 import Button from "../button/Button"
@@ -66,24 +67,27 @@ export class EditorSection extends Component {
         this.setState({ data })
     }
 
-    handleImageChange(e, id) {
+    async handleImageChange(e, id) {
         const file = e.target.files[0]
-        const reader = new FileReader()
-        reader.addEventListener("load", () => {
-            const dataURL = reader.result
-            // console.log(dataURL)
-            const data = [...this.state.data]
-            console.log(id)
-            const idx = data.findIndex((d) => d.type === "image" && d.id === id)
-            const item = { ...data[idx] }
-            item.src = dataURL
-            data[idx] = item
-
-            console.log(data)
-            
-            this.setState({ data })
-        })
-        reader.readAsDataURL(file)
+        console.log(file)
+        if(!file) return
+        console.log("Size: " + file.size / 1024 / 1024 + "MB")
+        const options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 1920,
+            useWebWorker: true
+        }
+        const compressedFile = await imageCompression(file, options)
+        console.log("Compressed Size: " + compressedFile.size / 1024 / 1024 + "MB")
+        const dataURL = await imageCompression.getDataUrlFromFile(compressedFile)
+        
+        const data = [...this.state.data]
+        const idx = data.findIndex((d) => d.type === "image" && d.id === id)
+        const item = { ...data[idx] }
+        item.src = dataURL
+        data[idx] = item
+        
+        this.setState({ data })
     }
     
     /*===================
@@ -127,7 +131,7 @@ export class EditorSection extends Component {
                         {this.state.data.map((d) => {
                             if (d.type == "paragraph") {
                                 return (
-                                    <div className={styles.inputContainer}>
+                                    <div className={styles.inputContainer} key={d.id}>
                                         <TextareaWithControls
                                             key={d.id}
                                             placeholder="Enter some text"
@@ -146,17 +150,18 @@ export class EditorSection extends Component {
                             }
                             if(d.type == "image") {
                                 return (
-                                    <div className={styles.inputContainer}>
-                                        <input
+                                    <div className={styles.inputContainer} key={d.id}>
+                                        <Input
                                             type="file"
-                                            key={d.id}
-                                            placeholder="Enter some text"
-                                            label="Paragraph"
+                                            label="Image"
+                                            accept="image/png, image/jpeg"
                                             onChange={(e) => this.handleImageChange(e, d.id)}
                                         />
-                                        <div>
-                                            <img src={d.src}/>
-                                        </div>
+                                        {d.src && 
+                                            <div className={styles.imageContainer}>
+                                                <img src={d.src} className={styles.image}/>
+                                            </div>
+                                        }
                                     </div>
                                 )
                             }
