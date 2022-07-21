@@ -26,7 +26,7 @@ export class Control extends Component {
                         </div>
                     </div>
                     <div>
-                        <Button color={variables.color_white} size="large">
+                        <Button color={variables.color_white} size="large" onClick={this.props.downloadDoc}>
                             Download
                         </Button>
                     </div>

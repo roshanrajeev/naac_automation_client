@@ -20,7 +20,7 @@ export class Editor extends Component {
         this.handleSectionDelete = this.handleSectionDelete.bind(this)
     }
 
-    getNewSection = () => ({ id: uuid() })
+    getNewSection = () => ({ id: uuid(), data: [] })
 
     handleSectionAdd(id) {
         const idx = this.state.sections.findIndex(
@@ -82,6 +82,7 @@ export class Editor extends Component {
                                 id={section.id}
                                 addSection={this.handleSectionAdd}
                                 deleteSection={this.handleSectionDelete}
+                                data={section.data}
                             />
                         </section>
                     )
