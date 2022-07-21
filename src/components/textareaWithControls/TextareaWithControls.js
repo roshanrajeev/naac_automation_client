@@ -4,7 +4,7 @@ import TextareaAutosize from "react-textarea-autosize"
 
 class TextareaWithControls extends Component {
     render() {
-        const { type = "text", placeholder = "", label = "Label" } = this.props
+        const { type = "text", placeholder = "", label = "Label", onChange = () => {} } = this.props
 
         return (
             <div className={styles.container}>
@@ -22,6 +22,7 @@ class TextareaWithControls extends Component {
                     className={styles.textarea}
                     minRows="4"
                     placeholder={placeholder}
+                    onChange={onChange}
                 />
             </div>
         )

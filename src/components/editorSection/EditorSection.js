@@ -1,4 +1,5 @@
 import React, { Component, createRef } from "react"
+import { v4 as uuid } from "uuid"
 
 import TextareaWithControls from "../textareaWithControls/TextareaWithControls"
 import Button from "../button/Button"
@@ -17,23 +18,35 @@ export class EditorSection extends Component {
 
         this.state = {
             sectionActive: false,
-            heading: "",
+            data: [
+                { id: uuid(), type: "heading", value: "" },
+                { id: uuid(), type: "sub-heading", value: "" },
+            ],
         }
 
         this.handleSectionBarClick = this.handleSectionBarClick.bind(this)
+        this.handleParagraphAdd = this.handleParagraphAdd.bind(this)
+        this.handleImageAdd = this.handleImageAdd.bind(this)
     }
 
     /*=================== 
     HANDLERS
     =====================*/
     handleImageAdd(e) {
-        console.log("image add")
+        const item = {id: uuid(), type: "image", src: ""}
+        const data = [...this.state.data]
+        data.push(item)
+        this.setState({ data })
     }
 
     handleParagraphAdd(e) {
-        console.log("paragraph add")
+        const item = {id: uuid(), type: "paragraph", value: ""}
+        const data = [...this.state.data]
+        data.push(item)
+        this.setState({ data })
     }
 
+    
     handleSectionBarClick(e) {
         this.setState((prev) => ({
             ...prev,
@@ -41,6 +54,38 @@ export class EditorSection extends Component {
         }))
     }
 
+    handleTextChange(e, type, id = null) {
+        const data = [...this.state.data]
+        const idx = id
+        ? data.findIndex((d) => d.type === type && d.id === id)
+        : data.findIndex((d) => d.type === type)
+        const item = { ...data[idx] }
+        item.value = e.target.value
+        data[idx] = item
+        
+        this.setState({ data })
+    }
+
+    handleImageChange(e, id) {
+        const file = e.target.files[0]
+        const reader = new FileReader()
+        reader.addEventListener("load", () => {
+            const dataURL = reader.result
+            // console.log(dataURL)
+            const data = [...this.state.data]
+            console.log(id)
+            const idx = data.findIndex((d) => d.type === "image" && d.id === id)
+            const item = { ...data[idx] }
+            item.src = dataURL
+            data[idx] = item
+
+            console.log(data)
+            
+            this.setState({ data })
+        })
+        reader.readAsDataURL(file)
+    }
+    
     /*===================
     RENDER
     =====================*/
@@ -48,7 +93,7 @@ export class EditorSection extends Component {
     render() {
         return (
             <div>
-                <EditorSectionBar 
+                <EditorSectionBar
                     active={this.state.sectionActive}
                     addSection={this.props.addSection}
                     deleteSection={this.props.deleteSection}
@@ -63,6 +108,9 @@ export class EditorSection extends Component {
                                 label="Heading"
                                 placeholder="Enter heading"
                                 name="heading"
+                                onChange={(e) =>
+                                    this.handleTextChange(e, "heading")
+                                }
                             />
                         </div>
                         <div className={styles.inputContainer}>
@@ -71,14 +119,48 @@ export class EditorSection extends Component {
                                 label="Sub Heading"
                                 placeholder="Enter sub-heading"
                                 name="sub-heading"
+                                onChange={(e) =>
+                                    this.handleTextChange(e, "sub-heading")
+                                }
                             />
                         </div>
-                        <div className={styles.inputContainer}>
-                            <TextareaWithControls
-                                placeholder="Enter some text"
-                                label="Paragraph"
-                            />
-                        </div>
+                        {this.state.data.map((d) => {
+                            if (d.type == "paragraph") {
+                                return (
+                                    <div className={styles.inputContainer}>
+                                        <TextareaWithControls
+                                            key={d.id}
+                                            placeholder="Enter some text"
+                                            label="Paragraph"
+                                            value={d.value}
+                                            onChange={(e) =>
+                                                this.handleTextChange(
+                                                    e,
+                                                    "paragraph",
+                                                    d.id
+                                                )
+                                            }
+                                        />
+                                    </div>
+                                )
+                            }
+                            if(d.type == "image") {
+                                return (
+                                    <div className={styles.inputContainer}>
+                                        <input
+                                            type="file"
+                                            key={d.id}
+                                            placeholder="Enter some text"
+                                            label="Paragraph"
+                                            onChange={(e) => this.handleImageChange(e, d.id)}
+                                        />
+                                        <div>
+                                            <img src={d.src}/>
+                                        </div>
+                                    </div>
+                                )
+                            }
+                        })}
                         <div className={styles.buttonsContainer}>
                             <div className={styles.button}>
                                 <Button

@@ -1,6 +1,20 @@
 @use "../../assets/styles/mixins.scss" as mixin;
 
 .container {
+    // background-color: blue;
+    // min-height: 78vh;
+    max-height: 78vh;
+    overflow-y: scroll;
+    padding-right: 2rem;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+      
+    & {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
 
 .inputContainer {
