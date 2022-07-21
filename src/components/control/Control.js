@@ -11,7 +11,11 @@ export class Control extends Component {
                 <div className={styles.buttonsSection}>
                     <div className={styles.buttonsRow}>
                         <div className={styles.buttonContainer}>
-                            <Button color={variables.color_yellow} size="large">
+                            <Button
+                                color={variables.color_yellow}
+                                size="large"
+                                onClick={this.props.saveDoc}
+                            >
                                 Save
                             </Button>
                         </div>
@@ -20,6 +24,7 @@ export class Control extends Component {
                                 color={variables.color_white}
                                 type="outlined"
                                 size="large"
+                                onClick={this.props.previewDoc}
                             >
                                 Preview
                             </Button>

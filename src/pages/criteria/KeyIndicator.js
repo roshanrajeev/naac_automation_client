@@ -18,12 +18,20 @@ class KeyIndicator extends Component {
         }
 
         this.handleDocDownload = this.handleDocDownload.bind(this)
+        this.handleDocSave = this.handleDocSave.bind(this)
         this.handleSectionAdd = this.handleSectionAdd.bind(this)
         this.handleSectionDelete = this.handleSectionDelete.bind(this)
         this.handleImageAdd = this.handleImageAdd.bind(this)
         this.handleParagraphAdd = this.handleParagraphAdd.bind(this)
         this.handleImageChange = this.handleImageChange.bind(this)
         this.handleTextChange = this.handleTextChange.bind(this)
+    }
+
+    componentDidMount() {
+        const json = window.localStorage.getItem("1")
+        const sections = JSON.parse(json) || []
+        this.setState({ sections })
+        console.log(sections)
     }
 
     getNewSection = () => ({
@@ -34,7 +42,18 @@ class KeyIndicator extends Component {
         ],
     })
 
-    handleDocDownload() {}
+    handleDocDownload() {
+        console.log(JSON.stringify(this.state.sections))
+    }
+
+    handleDocSave() {
+        console.log("saving...")
+        window.localStorage.setItem("1", JSON.stringify(this.state.sections))
+    }
+
+    handleDocPreview() {
+
+    }
 
     handleSectionAdd(id) {
         console.log("section adding..")
@@ -166,7 +185,11 @@ class KeyIndicator extends Component {
                                 />
                             </div>
                             <div className={styles.controlContainer}>
-                                <Control downloadDoc={this.handleDocDownload} />
+                                <Control 
+                                    downloadDoc={this.handleDocDownload}
+                                    saveDoc={this.handleDocSave}     
+                                    previewDoc={this.handleDocPreview}    
+                                />
                             </div>
                         </div>
                     </div>

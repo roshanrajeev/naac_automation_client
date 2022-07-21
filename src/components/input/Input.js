@@ -10,6 +10,7 @@ class Input extends Component {
             name = "",
             onChange = () => {},
             accept = "*",
+            value = ""
         } = this.props
 
         return (
@@ -22,6 +23,7 @@ class Input extends Component {
                     name={name}
                     onChange={onChange}
                     accept={accept}
+                    value={value}
                 />
             </div>
         )

@@ -9,6 +9,7 @@ class TextareaWithControls extends Component {
             placeholder = "",
             label = "Label",
             onChange = () => {},
+            value=""
         } = this.props
 
         return (
@@ -28,6 +29,7 @@ class TextareaWithControls extends Component {
                     minRows="4"
                     placeholder={placeholder}
                     onChange={onChange}
+                    value={value}
                 />
             </div>
         )
