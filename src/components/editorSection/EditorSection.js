@@ -18,7 +18,7 @@ export class EditorSection extends Component {
         super(props)
 
         this.state = {
-            sectionActive: false
+            sectionActive: false,
         }
 
         this.handleSectionBarClick = this.handleSectionBarClick.bind(this)
@@ -27,14 +27,14 @@ export class EditorSection extends Component {
     /*=================== 
     HANDLERS
     =====================*/
-    
+
     handleSectionBarClick(e) {
         this.setState((prev) => ({
             ...prev,
             sectionActive: !prev.sectionActive,
         }))
     }
-    
+
     /*===================
     RENDER
     =====================*/
@@ -76,7 +76,10 @@ export class EditorSection extends Component {
                         {this.props.data.map((d) => {
                             if (d.type == "paragraph") {
                                 return (
-                                    <div className={styles.inputContainer} key={d.id}>
+                                    <div
+                                        className={styles.inputContainer}
+                                        key={d.id}
+                                    >
                                         <TextareaWithControls
                                             key={d.id}
                                             placeholder="Enter some text"
@@ -93,20 +96,32 @@ export class EditorSection extends Component {
                                     </div>
                                 )
                             }
-                            if(d.type == "image") {
+                            if (d.type == "image") {
                                 return (
-                                    <div className={styles.inputContainer} key={d.id}>
+                                    <div
+                                        className={styles.inputContainer}
+                                        key={d.id}
+                                    >
                                         <Input
                                             type="file"
                                             label="Image"
                                             accept="image/png, image/jpeg"
-                                            onChange={(e) => this.props.changeImage(e, d.id)}
+                                            onChange={(e) =>
+                                                this.props.changeImage(e, d.id)
+                                            }
                                         />
-                                        {d.src && 
-                                            <div className={styles.imageContainer}>
-                                                <img src={d.src} className={styles.image}/>
+                                        {d.src && (
+                                            <div
+                                                className={
+                                                    styles.imageContainer
+                                                }
+                                            >
+                                                <img
+                                                    src={d.src}
+                                                    className={styles.image}
+                                                />
                                             </div>
-                                        }
+                                        )}
                                     </div>
                                 )
                             }

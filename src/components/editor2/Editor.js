@@ -46,10 +46,23 @@ export class Editor extends Component {
                                 addSection={this.props.addSection}
                                 deleteSection={this.props.deleteSection}
                                 data={section.data}
-                                addImage={(e) => this.props.addImage(e, section.id)}
-                                addParagraph={(e) => this.props.addParagraph(e, section.id)}
-                                changeImage={(e, id) => this.props.changeImage(e, id, section.id)}
-                                changeText={(e, type, id) => this.props.changeText(e, section.id, type, id)}
+                                addImage={(e) =>
+                                    this.props.addImage(e, section.id)
+                                }
+                                addParagraph={(e) =>
+                                    this.props.addParagraph(e, section.id)
+                                }
+                                changeImage={(e, id) =>
+                                    this.props.changeImage(e, id, section.id)
+                                }
+                                changeText={(e, type, id) =>
+                                    this.props.changeText(
+                                        e,
+                                        section.id,
+                                        type,
+                                        id
+                                    )
+                                }
                             />
                         </section>
                     )
