@@ -18,11 +18,7 @@ export class EditorSection extends Component {
         super(props)
 
         this.state = {
-            sectionActive: false,
-            data: [
-                { id: uuid(), type: "heading", value: "" },
-                { id: uuid(), type: "sub-heading", value: "" },
-            ],
+            sectionActive: false
         }
 
         this.handleSectionBarClick = this.handleSectionBarClick.bind(this)
