@@ -73,6 +73,9 @@ class KeyIndicator extends Component {
     }
 
     handleSectionDelete(id) {
+        if(!window.confirm("Are you sure you want to delete?"))
+            return
+
         this.setState((prev) => {
             const newSections = prev.sections.filter(
                 (section) => section.id !== id

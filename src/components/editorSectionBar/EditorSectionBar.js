@@ -2,6 +2,8 @@ import React, { Component } from "react"
 
 import styles from "./EditorSectionBar.module.scss"
 import DropArrowIcon from "../../assets/img/icons/DropArrow.svg"
+import AddIcon from '../../assets/img/icons/Add.svg'
+import DeleteIcon from '../../assets/img/icons/Delete.svg'
 
 export class EditorSectionBar extends Component {
     render() {
@@ -21,14 +23,16 @@ export class EditorSectionBar extends Component {
                 </div>
                 <div className={styles.buttons}>
                     <button
+                        className={styles.button}
                         onClick={() => this.props.addSection(this.props.id)}
                     >
-                        Add
+                        <img src={AddIcon}/>
                     </button>
                     <button
+                        className={styles.button}
                         onClick={() => this.props.deleteSection(this.props.id)}
                     >
-                        Del
+                        <img src={DeleteIcon}/>
                     </button>
                 </div>
             </div>
