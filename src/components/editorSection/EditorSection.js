@@ -26,68 +26,17 @@ export class EditorSection extends Component {
         }
 
         this.handleSectionBarClick = this.handleSectionBarClick.bind(this)
-        this.handleParagraphAdd = this.handleParagraphAdd.bind(this)
-        this.handleImageAdd = this.handleImageAdd.bind(this)
     }
 
     /*=================== 
     HANDLERS
     =====================*/
-    handleImageAdd(e) {
-        const item = {id: uuid(), type: "image", src: ""}
-        const data = [...this.state.data]
-        data.push(item)
-        this.setState({ data })
-    }
-
-    handleParagraphAdd(e) {
-        const item = {id: uuid(), type: "paragraph", value: ""}
-        const data = [...this.state.data]
-        data.push(item)
-        this.setState({ data })
-    }
-
     
     handleSectionBarClick(e) {
         this.setState((prev) => ({
             ...prev,
             sectionActive: !prev.sectionActive,
         }))
-    }
-
-    handleTextChange(e, type, id = null) {
-        const data = [...this.state.data]
-        const idx = id
-        ? data.findIndex((d) => d.type === type && d.id === id)
-        : data.findIndex((d) => d.type === type)
-        const item = { ...data[idx] }
-        item.value = e.target.value
-        data[idx] = item
-        
-        this.setState({ data })
-    }
-
-    async handleImageChange(e, id) {
-        const file = e.target.files[0]
-        console.log(file)
-        if(!file) return
-        console.log("Size: " + file.size / 1024 / 1024 + "MB")
-        const options = {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 1920,
-            useWebWorker: true
-        }
-        const compressedFile = await imageCompression(file, options)
-        console.log("Compressed Size: " + compressedFile.size / 1024 / 1024 + "MB")
-        const dataURL = await imageCompression.getDataUrlFromFile(compressedFile)
-        
-        const data = [...this.state.data]
-        const idx = data.findIndex((d) => d.type === "image" && d.id === id)
-        const item = { ...data[idx] }
-        item.src = dataURL
-        data[idx] = item
-        
-        this.setState({ data })
     }
     
     /*===================
@@ -113,7 +62,7 @@ export class EditorSection extends Component {
                                 placeholder="Enter heading"
                                 name="heading"
                                 onChange={(e) =>
-                                    this.handleTextChange(e, "heading")
+                                    this.props.changeText(e, "heading")
                                 }
                             />
                         </div>
@@ -124,11 +73,11 @@ export class EditorSection extends Component {
                                 placeholder="Enter sub-heading"
                                 name="sub-heading"
                                 onChange={(e) =>
-                                    this.handleTextChange(e, "sub-heading")
+                                    this.props.changeText(e, "sub-heading")
                                 }
                             />
                         </div>
-                        {this.state.data.map((d) => {
+                        {this.props.data.map((d) => {
                             if (d.type == "paragraph") {
                                 return (
                                     <div className={styles.inputContainer} key={d.id}>
@@ -138,7 +87,7 @@ export class EditorSection extends Component {
                                             label="Paragraph"
                                             value={d.value}
                                             onChange={(e) =>
-                                                this.handleTextChange(
+                                                this.props.changeText(
                                                     e,
                                                     "paragraph",
                                                     d.id
@@ -155,7 +104,7 @@ export class EditorSection extends Component {
                                             type="file"
                                             label="Image"
                                             accept="image/png, image/jpeg"
-                                            onChange={(e) => this.handleImageChange(e, d.id)}
+                                            onChange={(e) => this.props.changeImage(e, d.id)}
                                         />
                                         {d.src && 
                                             <div className={styles.imageContainer}>
@@ -171,7 +120,7 @@ export class EditorSection extends Component {
                                 <Button
                                     size="small"
                                     color={variables.color_blue}
-                                    onClick={this.handleParagraphAdd}
+                                    onClick={this.props.addParagraph}
                                 >
                                     Add Paragraph +
                                 </Button>
@@ -180,7 +129,7 @@ export class EditorSection extends Component {
                                 <Button
                                     size="small"
                                     color={variables.color_blue}
-                                    onClick={this.handleImageAdd}
+                                    onClick={this.props.addImage}
                                 >
                                     Add Image +
                                 </Button>
