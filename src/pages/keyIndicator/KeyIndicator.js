@@ -35,9 +35,13 @@ class KeyIndicator extends Component {
     componentDidMount() {
         const { id } = this.props.params
         const json = window.localStorage.getItem(id)
-        const sections = JSON.parse(json) || []
-        this.setState({ sections })
-        console.log(sections)
+        if(!json) return
+        const data = JSON.parse(json)
+        console.log(data)
+        const title = data["title"] || ""
+        const sections = data["sections"] || []
+        console.log({ title, sections })
+        this.setState({ title, sections })
     }
 
     getNewSection = () => ({
@@ -60,7 +64,7 @@ class KeyIndicator extends Component {
             this.props.params.id,
             JSON.stringify({
                 title: this.state.title,
-                section: this.state.sections,
+                sections: this.state.sections,
             })
         )
     }

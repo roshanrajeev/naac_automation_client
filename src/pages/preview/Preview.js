@@ -24,7 +24,8 @@ export class Preview extends Component {
         const { id } = this.props.params
         const json = window.localStorage.getItem(id)
         if (!json) return
-        const sections = JSON.parse(json)
+        const data = JSON.parse(json)
+        const sections = data["sections"]
         asyncFunc(sections)
     }
     render() {
