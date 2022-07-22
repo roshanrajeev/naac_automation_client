@@ -5,9 +5,10 @@ import {
     Paragraph,
     SectionType,
     TextRun,
+    UnderlineType,
 } from "docx"
 
-const toDocx = async (sections) => {
+const toDocx = async (title, sections) => {
     const doc_sections = []
     sections.forEach((section) => {
         section.data.forEach((d) => {
@@ -42,7 +43,19 @@ const toDocx = async (sections) => {
         sections: [
             {
                 properties: {},
-                children: doc_sections,
+                children: [
+                    new Paragraph({
+                        heading: HeadingLevel.HEADING_1,
+                        children: [
+                            new TextRun({
+                                text: title,
+                                underline: { type: UnderlineType.SINGLE },
+                                bold: true,
+                            })
+                        ]
+                    }),
+                    ...doc_sections
+                ],
             },
         ],
     })

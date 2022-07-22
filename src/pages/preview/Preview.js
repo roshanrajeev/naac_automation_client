@@ -17,16 +17,17 @@ export class Preview extends Component {
         this.preview = createRef()
     }
     componentDidMount() {
-        const asyncFunc = async (sections) => {
-            const blob = await toDocx(sections)
+        const asyncFunc = async (title, sections) => {
+            const blob = await toDocx(title, sections)
             await renderAsync(blob, this.preview.current, this.preview.current)
         }
         const { id } = this.props.params
         const json = window.localStorage.getItem(id)
         if (!json) return
         const data = JSON.parse(json)
+        const title = data["title"]
         const sections = data["sections"]
-        asyncFunc(sections)
+        asyncFunc(title, sections)
     }
     render() {
         return (

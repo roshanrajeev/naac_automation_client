@@ -54,7 +54,7 @@ class KeyIndicator extends Component {
 
     async handleDocDownload() {
         // console.log(JSON.stringify(this.state.sections))
-        const blob = await toDocx(this.state.sections)
+        const blob = await toDocx(this.state.title, this.state.sections)
         saveAs(blob, "file.docx")
     }
 
