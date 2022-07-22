@@ -5,6 +5,7 @@ import Home from "./pages/home/Home"
 import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
 import KeyIndicator from "./pages/criteria/KeyIndicator"
+import Preview from "./pages/preview/Preview"
 
 const App = () => {
     return (
@@ -15,6 +16,7 @@ const App = () => {
                 <Route path="/register" element={<Register />} />
                 {/* <Route path="/editor" element={<Editor/>}/> */}
                 <Route path="/indicator" element={<KeyIndicator />} />
+                <Route path="/preview/:id" element={<Preview />} />
             </Routes>
         </div>
     )

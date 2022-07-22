@@ -5,6 +5,10 @@ import variables from "../../assets/styles/mixins.scss"
 import { Select, Option } from "../select/Select"
 
 export class Control extends Component {
+    constructor(props) {
+        super(props)
+    }
+    
     render() {
         return (
             <div className={styles.container}>
@@ -24,7 +28,7 @@ export class Control extends Component {
                                 color={variables.color_white}
                                 type="outlined"
                                 size="large"
-                                onClick={this.props.previewDoc}
+                                href={`/preview/${this.props.id}`}
                             >
                                 Preview
                             </Button>

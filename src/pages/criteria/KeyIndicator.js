@@ -2,19 +2,24 @@ import React, { Component } from "react"
 import { v4 as uuid } from "uuid"
 import imageCompression from "browser-image-compression"
 import produce from "immer"
+import { saveAs } from "file-saver"
 
 import Control from "../../components/control/Control"
 import Header from "../../components/header/Header"
 import Editor from "../../components/editor2/Editor"
 
 import styles from "./KeyIndicator.module.scss"
+import toDocx from "../../utils/toDocx"
 
 class KeyIndicator extends Component {
+    static defaultProps = {
+        id: 1
+    }
     constructor(props) {
         super(props)
 
         this.state = {
-            sections: [],
+            sections: []
         }
 
         this.handleDocDownload = this.handleDocDownload.bind(this)
@@ -28,7 +33,8 @@ class KeyIndicator extends Component {
     }
 
     componentDidMount() {
-        const json = window.localStorage.getItem("1")
+        console.log(this.props.id)
+        const json = window.localStorage.getItem(this.props.id)
         const sections = JSON.parse(json) || []
         this.setState({ sections })
         console.log(sections)
@@ -42,13 +48,15 @@ class KeyIndicator extends Component {
         ],
     })
 
-    handleDocDownload() {
-        console.log(JSON.stringify(this.state.sections))
+    async handleDocDownload() {
+        // console.log(JSON.stringify(this.state.sections))
+        const blob = await toDocx(this.state.sections)
+        saveAs(blob, 'file.docx')
     }
 
     handleDocSave() {
         console.log("saving...")
-        window.localStorage.setItem("1", JSON.stringify(this.state.sections))
+        window.localStorage.setItem(this.props.id, JSON.stringify(this.state.sections))
     }
 
     handleDocPreview() {
@@ -191,7 +199,7 @@ class KeyIndicator extends Component {
                                 <Control 
                                     downloadDoc={this.handleDocDownload}
                                     saveDoc={this.handleDocSave}     
-                                    previewDoc={this.handleDocPreview}    
+                                    id={this.props.id}
                                 />
                             </div>
                         </div>
