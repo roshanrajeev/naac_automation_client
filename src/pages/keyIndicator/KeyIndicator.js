@@ -10,15 +10,14 @@ import Editor from "../../components/editor2/Editor"
 
 import styles from "./KeyIndicator.module.scss"
 import toDocx from "../../utils/toDocx"
+import withRouter from "../../utils/withRouter"
 
 class KeyIndicator extends Component {
-    static defaultProps = {
-        id: 1
-    }
     constructor(props) {
         super(props)
 
         this.state = {
+            title: "",
             sections: []
         }
 
@@ -30,11 +29,12 @@ class KeyIndicator extends Component {
         this.handleParagraphAdd = this.handleParagraphAdd.bind(this)
         this.handleImageChange = this.handleImageChange.bind(this)
         this.handleTextChange = this.handleTextChange.bind(this)
+        this.handleTitleChange = this.handleTitleChange.bind(this)
     }
 
     componentDidMount() {
-        console.log(this.props.id)
-        const json = window.localStorage.getItem(this.props.id)
+        const { id } = this.props.params
+        const json = window.localStorage.getItem(id)
         const sections = JSON.parse(json) || []
         this.setState({ sections })
         console.log(sections)
@@ -56,7 +56,7 @@ class KeyIndicator extends Component {
 
     handleDocSave() {
         console.log("saving...")
-        window.localStorage.setItem(this.props.id, JSON.stringify(this.state.sections))
+        window.localStorage.setItem(this.props.params.id, JSON.stringify(this.state.sections))
     }
 
     handleDocPreview() {
@@ -175,6 +175,10 @@ class KeyIndicator extends Component {
         )
     }
 
+    handleTitleChange(e) {
+        this.setState({title: e.target.value})
+    }
+
     render() {
         return (
             <>
@@ -186,7 +190,9 @@ class KeyIndicator extends Component {
                         <div className={styles.contentContainer}>
                             <div className={styles.editorContainer}>
                                 <Editor
+                                    title={this.state.title}
                                     sections={this.state.sections}
+                                    changeTitle={this.handleTitleChange}
                                     changeImage={this.handleImageChange}
                                     changeText={this.handleTextChange}
                                     addParagraph={this.handleParagraphAdd}
@@ -199,7 +205,7 @@ class KeyIndicator extends Component {
                                 <Control 
                                     downloadDoc={this.handleDocDownload}
                                     saveDoc={this.handleDocSave}     
-                                    id={this.props.id}
+                                    id={this.props.params.id}
                                 />
                             </div>
                         </div>
@@ -210,4 +216,4 @@ class KeyIndicator extends Component {
     }
 }
 
-export default KeyIndicator
+export default withRouter(KeyIndicator)

@@ -21,6 +21,8 @@ export class Editor extends Component {
                         type="text"
                         label="Title"
                         placeholder="Enter Heading"
+                        onChange={this.props.changeTitle}
+                        value={this.props.title}
                     />
                 </div>
 

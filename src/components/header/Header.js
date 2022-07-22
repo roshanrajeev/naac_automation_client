@@ -14,7 +14,7 @@ class Header extends Component {
                             <Link to="#">Home</Link>
                         </li>
                         <li className={styles.link}>
-                            <Link to="#">Criteria</Link>
+                            <Link to="/criteria">Criteria</Link>
                         </li>
                         <li className={styles.link}>
                             <Link to="#">Profile</Link>
