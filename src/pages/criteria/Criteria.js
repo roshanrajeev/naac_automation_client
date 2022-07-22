@@ -1,27 +1,67 @@
 import React, { Component } from "react"
-
-import Control from "../../components/control/Control"
-import Header from "../../components/header/Header"
-import Editor from "../editor/Editor"
-
+import { Link } from "react-router-dom"
 import styles from "./Criteria.module.scss"
 
-class Criteria extends Component {
+export class Criteria extends Component {
     render() {
         return (
-            <>
-                <div className={styles.headerContainer}>
-                    <Header />
-                </div>
-                <div className={styles.contentContainer}>
-                    <div className={styles.editorContainer}>
-                        <Editor />
+            <div>
+                <div className={styles.criterion}>
+                    <h1 className={styles.title}>Criterion 1</h1>
+                    <div className={styles.indicator}>
+                        <Link
+                            className={styles.indicatorName}
+                            to="/indicator/1"
+                        >
+                            Indicator 1
+                        </Link>
                     </div>
-                    <div className={styles.controlContainer}>
-                        <Control />
+                    <div className={styles.indicator}>
+                        <Link
+                            className={styles.indicatorName}
+                            to="/indicator/2"
+                        >
+                            Indicator 2
+                        </Link>
+                    </div>
+                    <div className={styles.indicator}>
+                        <Link
+                            className={styles.indicatorName}
+                            to="/indicator/3"
+                        >
+                            Indicator 3
+                        </Link>
                     </div>
                 </div>
-            </>
+
+                <div className={styles.criterion}>
+                    <h1 className={styles.title}>Criterion 2</h1>
+                    <div className={styles.indicator}>
+                        <Link
+                            className={styles.indicatorName}
+                            to="/indicator/4"
+                        >
+                            Indicator 1
+                        </Link>
+                    </div>
+                    <div className={styles.indicator}>
+                        <Link
+                            className={styles.indicatorName}
+                            to="/indicator/5"
+                        >
+                            Indicator 2
+                        </Link>
+                    </div>
+                    <div className={styles.indicator}>
+                        <Link
+                            className={styles.indicatorName}
+                            to="/indicator/6"
+                        >
+                            Indicator 3
+                        </Link>
+                    </div>
+                </div>
+            </div>
         )
     }
 }

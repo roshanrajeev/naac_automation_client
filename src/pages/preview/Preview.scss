@@ -1,0 +1,10 @@
+@use "../../assets/styles/mixins.scss" as mixin;
+
+.docx-wrapper {
+    background-color: transparent !important;
+    width: 100%;
+    .docx {
+        box-shadow: none !important;
+        border: 1px solid rgba($color: mixin.$color-black, $alpha: 0.3);
+    }
+}

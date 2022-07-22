@@ -4,6 +4,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -15,7 +16,7 @@ body {
 }
 
 .container {
-    padding: 0 1rem;
+    // padding: 0 1rem;
     margin: 0 auto;
 
     @include mixin.tablet {
@@ -25,4 +26,8 @@ body {
     @include mixin.desktop {
         max-width: 151.1rem;
     }
+}
+
+.contentWrapper {
+    margin-top: mixin.$header-height + (mixin.$header-space-top * 2);
 }

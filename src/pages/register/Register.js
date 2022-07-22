@@ -28,7 +28,10 @@ class Register extends React.Component {
             },
             body: JSON.stringify(this.state),
         })
+<<<<<<< HEAD
         console.log(result)
+=======
+>>>>>>> 045e7e83134faa32d2bb2cd57a7e00378caa0915
         if (!result.ok) {
             console.log("Not Registered")
             return

@@ -29,8 +29,11 @@ class Login extends Component {
             return
         }
         console.log("Login Successful")
+<<<<<<< HEAD
         const data = await result.json()
         console.log(data)
+=======
+>>>>>>> 045e7e83134faa32d2bb2cd57a7e00378caa0915
     }
 
     handleChange(e) {

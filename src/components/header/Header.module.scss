@@ -1,13 +1,26 @@
 @use "../../assets/styles/mixins.scss" as mixin;
 
 .container {
-    border-radius: 1.2rem;
+    color: mixin.$color-white;
+    height: mixin.$header-height;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: mixin.$color-blue;
-    color: mixin.$color-white;
-    padding: 2.7rem 4.3rem;
     align-items: center;
+    z-index: 1;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: mixin.$extra-container-space * -1;
+        top: 0;
+        width: calc(100% + (mixin.$extra-container-space * 2));
+        height: 100%;
+        background-color: mixin.$color-blue;
+        border-radius: 1.2rem;
+        z-index: -1;
+    }
 }
 
 .title {
