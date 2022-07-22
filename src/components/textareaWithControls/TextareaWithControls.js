@@ -9,7 +9,7 @@ class TextareaWithControls extends Component {
             placeholder = "",
             label = "Label",
             onChange = () => {},
-            value=""
+            value = "",
         } = this.props
 
         return (

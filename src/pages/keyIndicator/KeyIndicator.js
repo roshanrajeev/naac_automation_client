@@ -18,7 +18,7 @@ class KeyIndicator extends Component {
 
         this.state = {
             title: "",
-            sections: []
+            sections: [],
         }
 
         this.handleDocDownload = this.handleDocDownload.bind(this)
@@ -51,17 +51,21 @@ class KeyIndicator extends Component {
     async handleDocDownload() {
         // console.log(JSON.stringify(this.state.sections))
         const blob = await toDocx(this.state.sections)
-        saveAs(blob, 'file.docx')
+        saveAs(blob, "file.docx")
     }
 
     handleDocSave() {
         console.log("saving...")
-        window.localStorage.setItem(this.props.params.id, JSON.stringify(this.state.sections))
+        window.localStorage.setItem(
+            this.props.params.id,
+            JSON.stringify({
+                title: this.state.title,
+                section: this.state.sections,
+            })
+        )
     }
 
-    handleDocPreview() {
-
-    }
+    handleDocPreview() {}
 
     handleSectionAdd(id) {
         console.log("section adding..")
@@ -81,8 +85,7 @@ class KeyIndicator extends Component {
     }
 
     handleSectionDelete(id) {
-        if(!window.confirm("Are you sure you want to delete?"))
-            return
+        if (!window.confirm("Are you sure you want to delete?")) return
 
         this.setState((prev) => {
             const newSections = prev.sections.filter(
@@ -176,7 +179,7 @@ class KeyIndicator extends Component {
     }
 
     handleTitleChange(e) {
-        this.setState({title: e.target.value})
+        this.setState({ title: e.target.value })
     }
 
     render() {
@@ -202,9 +205,9 @@ class KeyIndicator extends Component {
                                 />
                             </div>
                             <div className={styles.controlContainer}>
-                                <Control 
+                                <Control
                                     downloadDoc={this.handleDocDownload}
-                                    saveDoc={this.handleDocSave}     
+                                    saveDoc={this.handleDocSave}
                                     id={this.props.params.id}
                                 />
                             </div>

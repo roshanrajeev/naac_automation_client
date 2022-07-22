@@ -57,7 +57,11 @@ export class EditorSection extends Component {
                                 label="Heading"
                                 placeholder="Enter heading"
                                 name="heading"
-                                value={this.props.data.find(d => d.type == "heading").value}
+                                value={
+                                    this.props.data.find(
+                                        (d) => d.type == "heading"
+                                    ).value
+                                }
                                 onChange={(e) =>
                                     this.props.changeText(e, "heading")
                                 }
@@ -69,7 +73,11 @@ export class EditorSection extends Component {
                                 label="Sub Heading"
                                 placeholder="Enter sub-heading"
                                 name="sub-heading"
-                                value={this.props.data.find(d => d.type == "sub-heading").value}
+                                value={
+                                    this.props.data.find(
+                                        (d) => d.type == "sub-heading"
+                                    ).value
+                                }
                                 onChange={(e) =>
                                     this.props.changeText(e, "sub-heading")
                                 }
