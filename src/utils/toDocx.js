@@ -1,4 +1,5 @@
 import {
+    convertMillimetersToTwip,
     Document,
     HeadingLevel,
     Packer,
@@ -15,23 +16,39 @@ const toDocx = async (title, sections) => {
             if (d.type == "heading") {
                 doc_sections.push(
                     new Paragraph({
-                        text: d.value,
                         heading: HeadingLevel.HEADING_2,
+                        children: [
+                            new TextRun({
+                                text: d.value,
+                                bold: true
+                            })
+                        ]
                     })
                 )
             }
             if (d.type == "sub-heading") {
                 doc_sections.push(
                     new Paragraph({
-                        text: d.value,
                         heading: HeadingLevel.HEADING_3,
+                        children: [
+                            new TextRun({
+                                text: d.value
+                            })
+                        ]
                     })
                 )
             }
+            console.log(d.value)
             if (d.type == "paragraph") {
                 doc_sections.push(
                     new Paragraph({
-                        text: d.value,
+                        children: [
+                            new TextRun({
+                                text: d.value,
+                                size: 24,
+                                font: "Times New Roman"
+                            })
+                        ]
                     })
                 )
             }
@@ -40,17 +57,53 @@ const toDocx = async (title, sections) => {
         })
     })
     const doc = new Document({
+        styles: {
+            default: {
+                heading1: {
+                    run: {
+                        bold: true,
+                        color: "000000",
+                        underline: UnderlineType.SINGLE,
+                        size: 36,
+                        font: "Times New Roman"
+                    }
+                },
+                heading2: {
+                    run: {
+                        bold: true,
+                        color: "000000",
+                        size: 32,
+                        font: "Times New Roman"
+                    }
+                },
+                heading3: {
+                    run: {
+                        bold: true,
+                        color: "000000",
+                        size: 28,
+                        font: "Times New Roman"
+                    }
+                },
+            }
+        },
         sections: [
             {
-                properties: {},
+                properties: {
+                    page: {
+                        margin: {
+                            top: convertMillimetersToTwip(30),
+                            left: convertMillimetersToTwip(30),
+                            right: convertMillimetersToTwip(20),
+                            bottom: convertMillimetersToTwip(15)
+                        }
+                    }
+                },
                 children: [
                     new Paragraph({
                         heading: HeadingLevel.HEADING_1,
                         children: [
                             new TextRun({
-                                text: title,
-                                underline: { type: UnderlineType.SINGLE },
-                                bold: true,
+                                text: title
                             })
                         ]
                     }),
