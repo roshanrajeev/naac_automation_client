@@ -35,7 +35,7 @@ class KeyIndicator extends Component {
     componentDidMount() {
         const { id } = this.props.params
         const json = window.localStorage.getItem(id)
-        if(!json) return
+        if (!json) return
         const data = JSON.parse(json)
         console.log(data)
         const title = data["title"] || ""

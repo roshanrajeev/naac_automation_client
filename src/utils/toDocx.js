@@ -20,9 +20,9 @@ const toDocx = async (title, sections) => {
                         children: [
                             new TextRun({
                                 text: d.value,
-                                bold: true
-                            })
-                        ]
+                                bold: true,
+                            }),
+                        ],
                     })
                 )
             }
@@ -32,9 +32,9 @@ const toDocx = async (title, sections) => {
                         heading: HeadingLevel.HEADING_3,
                         children: [
                             new TextRun({
-                                text: d.value
-                            })
-                        ]
+                                text: d.value,
+                            }),
+                        ],
                     })
                 )
             }
@@ -46,9 +46,9 @@ const toDocx = async (title, sections) => {
                             new TextRun({
                                 text: d.value,
                                 size: 24,
-                                font: "Times New Roman"
-                            })
-                        ]
+                                font: "Times New Roman",
+                            }),
+                        ],
                     })
                 )
             }
@@ -65,26 +65,26 @@ const toDocx = async (title, sections) => {
                         color: "000000",
                         underline: UnderlineType.SINGLE,
                         size: 36,
-                        font: "Times New Roman"
-                    }
+                        font: "Times New Roman",
+                    },
                 },
                 heading2: {
                     run: {
                         bold: true,
                         color: "000000",
                         size: 32,
-                        font: "Times New Roman"
-                    }
+                        font: "Times New Roman",
+                    },
                 },
                 heading3: {
                     run: {
                         bold: true,
                         color: "000000",
                         size: 28,
-                        font: "Times New Roman"
-                    }
+                        font: "Times New Roman",
+                    },
                 },
-            }
+            },
         },
         sections: [
             {
@@ -94,20 +94,20 @@ const toDocx = async (title, sections) => {
                             top: convertMillimetersToTwip(30),
                             left: convertMillimetersToTwip(30),
                             right: convertMillimetersToTwip(20),
-                            bottom: convertMillimetersToTwip(15)
-                        }
-                    }
+                            bottom: convertMillimetersToTwip(15),
+                        },
+                    },
                 },
                 children: [
                     new Paragraph({
                         heading: HeadingLevel.HEADING_1,
                         children: [
                             new TextRun({
-                                text: title
-                            })
-                        ]
+                                text: title,
+                            }),
+                        ],
                     }),
-                    ...doc_sections
+                    ...doc_sections,
                 ],
             },
         ],
