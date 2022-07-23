@@ -28,11 +28,14 @@ class Register extends React.Component {
             },
             body: JSON.stringify(this.state),
         })
+        console.log(result)
         if (!result.ok) {
             console.log("Not Registered")
             return
         }
         console.log("Registered")
+        const data = await result.json()
+        console.log(data)
     }
 
     handleChange(e) {
