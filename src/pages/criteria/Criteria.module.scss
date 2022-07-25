@@ -4,77 +4,77 @@
     align-items: center;
 }
 
-.criterias{
+.criterias {
     //width: 80%;
     padding: 1rem 4rem;
     margin: 4rem;
 }
 
-.heading{
-    font-family: 'Lato';
+.heading {
+    font-family: "Lato";
     font-style: normal;
     font-weight: 700;
     font-size: 2.4rem;
     line-height: 2.9rem;
 }
 
-.title{
-    font-family: 'Lato';
+.title {
+    font-family: "Lato";
     font-style: normal;
     font-weight: 700;
     font-size: 1.8rem;
     line-height: 2.2rem;
 }
 
-.criterion{
+.criterion {
     padding: 4rem 0rem;
     margin-bottom: 2rem;
 }
 
-.criteria_top{
+.criteria_top {
     display: flex;
     justify-content: space-between;
 }
 
-.criteria_title{
+.criteria_title {
     flex-grow: 1;
     margin-right: 1.5rem;
 }
 
-.add_key_indicator{
+.add_key_indicator {
     // flex-grow: 1;
     align-items: flex-end;
 }
 
-.add_key_indicator_button{
-    float:right;
+.add_key_indicator_button {
+    float: right;
     padding: 0.6rem 1.1rem;
     gap: 1rem;
-    background: #FFAA04;
+    background: #ffaa04;
     border-radius: 0.4rem;
-    color:black;
+    color: black;
 }
 
-.indicator{
-    background: #0C0D1C;
+.indicator {
+    background: #0c0d1c;
     border-radius: 0.4rem;
     height: 6rem;
     margin: 2rem 0rem;
     color: white;
 }
 
-.indicatorName{
-    font-family: 'Lato';
+.indicatorName {
+    font-family: "Lato";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none;
     margin-left: 2rem;
 }
 
-.indicator_container{
+.indicator_container {
     padding: 1rem 2rem;
     width: 100%;
     display: flex;
@@ -90,12 +90,12 @@
     align-items: center;
 }
 
-.link{
+.link {
     margin-right: 3.5rem;
     margin-top: 0.5rem;
 }
 
-.indicator_heading{
+.indicator_heading {
     display: flex;
     justify-content: space-between;
 }
@@ -105,4 +105,3 @@
     border: none;
     cursor: pointer;
 }
-

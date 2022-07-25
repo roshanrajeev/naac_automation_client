@@ -31,14 +31,14 @@ class Register extends React.Component {
         })
         console.log(result)
         if (!result.ok) {
-            console.log("Not Registered");
+            console.log("Not Registered")
             return
         }
-        console.log("Registered");
-        const data = await result.json();
-        console.log(data);
+        console.log("Registered")
+        const data = await result.json()
+        console.log(data)
 
-        return this.props.navigate("/login")  
+        return this.props.navigate("/login")
     }
 
     handleChange(e) {

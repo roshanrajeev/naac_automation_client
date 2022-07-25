@@ -21,7 +21,7 @@ class Login extends Component {
     async handleSubmit(e) {
         e.preventDefault()
 
-        const {user, setUser} = this.context
+        const { user, setUser } = this.context
 
         const result = await fetch("http://localhost:8000/login/", {
             method: "POST",
