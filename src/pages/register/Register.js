@@ -38,9 +38,6 @@ class Register extends React.Component {
         const data = await result.json();
         console.log(data);
 
-        // if (this.state.redirect) {
-        //     return <Redirect to={this.state.redirect} />
-        //   }
         return this.props.navigate("/login")  
     }
 

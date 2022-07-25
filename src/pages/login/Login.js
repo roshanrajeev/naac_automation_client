@@ -1,10 +1,13 @@
-import React, { Component } from "react"
+import React, { Component, useContext } from "react"
 import { Link } from "react-router-dom"
 import styles from "./Login.module.scss"
 import Nav from "../navbar/Navbar"
 import withNavigate from "../../utils/withNavigate"
+import { AuthContext } from "../../auth/authContext"
 
 class Login extends Component {
+    static contextType = AuthContext
+
     constructor(props) {
         super(props)
         this.state = {
@@ -17,6 +20,8 @@ class Login extends Component {
 
     async handleSubmit(e) {
         e.preventDefault()
+
+        const {user, setUser} = this.context
 
         const result = await fetch("http://localhost:8000/login/", {
             method: "POST",
@@ -32,7 +37,10 @@ class Login extends Component {
         console.log("Login Successful")
         const data = await result.json()
         console.log(data)
-        return this.props.navigate("/criteria")  
+
+        localStorage.setItem("token", data.token)
+        await setUser(data)
+        return this.props.navigate("/criteria")
     }
 
     handleChange(e) {

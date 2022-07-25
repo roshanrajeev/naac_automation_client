@@ -7,6 +7,7 @@ import Register from "./pages/register/Register"
 import KeyIndicator from "./pages/keyIndicator/KeyIndicator"
 import Preview from "./pages/preview/Preview"
 import Criteria from "./pages/criteria/Criteria"
+import ProtectedRoute from "./auth/protectedRoute"
 
 const App = () => {
     return (
@@ -15,9 +16,11 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 {/* <Route path="/editor" element={<Editor/>}/> */}
-                <Route path="/criteria" element={<Criteria />} />
-                <Route path="/indicator/:id" element={<KeyIndicator />} />
-                <Route path="/preview/:id" element={<Preview />} />
+                <Route element={<ProtectedRoute/>}>
+                    <Route path="/criteria" element={<Criteria />} />
+                    <Route path="/indicator/:id" element={<KeyIndicator />} />
+                    <Route path="/preview/:id" element={<Preview />} />
+                </Route>
             </Routes>
         </div>
     )
