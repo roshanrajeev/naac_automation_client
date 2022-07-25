@@ -57,16 +57,16 @@ export class Criteria extends Component {
                                             </div>
                                             <ul className={styles.links}>
                                                 <li className={styles.link}>
-                                                    <Link to="/indicator/{indicator.id}/"> <img src={previewicon} alt="example" /></Link>
+                                                    <Link to={`/preview/${indicator.id}/`}> <img src={previewicon} alt="example" /></Link>
                                                 </li>
                                                 <li className={styles.link}>
-                                                    <Link to="/indicator/{indicator.id}/download"> <img src={downloadicon} alt="example" /></Link>
+                                                    <Link to={`/indicator/${indicator.id}/download`}> <img src={downloadicon} alt="example" /></Link>
                                                 </li>
                                                 <li className={styles.link}>
-                                                    <Link to="/indicator/{indicator.id}/edit"> <img src={editicon} alt="example" /></Link>
+                                                    <Link to={`/indicator/${indicator.id}/`}> <img src={editicon} alt="example" /></Link>
                                                 </li>
                                                 <li className={styles.link}>
-                                                    <Link to="/indicator/{indicator.id}/delete"> <img src={removeicon} alt="example" /></Link>
+                                                    <Link to={`/indicator/${indicator.id}/delete`}> <img src={removeicon} alt="example" /></Link>
                                                 </li>
                                             </ul>
                                     </div>
