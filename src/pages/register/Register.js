@@ -1,8 +1,9 @@
 import React from "react"
 import styles from "./Register.module.scss"
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import Nav from "../navbar/Navbar"
 import Button from "../../components/button/Button"
+import withNavigate from "../../utils/withNavigate"
 
 class Register extends React.Component {
     constructor(props) {
@@ -30,12 +31,17 @@ class Register extends React.Component {
         })
         console.log(result)
         if (!result.ok) {
-            console.log("Not Registered")
+            console.log("Not Registered");
             return
         }
-        console.log("Registered")
-        const data = await result.json()
-        console.log(data)
+        console.log("Registered");
+        const data = await result.json();
+        console.log(data);
+
+        // if (this.state.redirect) {
+        //     return <Redirect to={this.state.redirect} />
+        //   }
+        return this.props.navigate("/login")  
     }
 
     handleChange(e) {
@@ -116,4 +122,4 @@ class Register extends React.Component {
     }
 }
 
-export default Register
+export default withNavigate(Register)

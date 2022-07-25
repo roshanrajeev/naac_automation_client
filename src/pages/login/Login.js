@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import styles from "./Login.module.scss"
 import Nav from "../navbar/Navbar"
+import withNavigate from "../../utils/withNavigate"
 
 class Login extends Component {
     constructor(props) {
@@ -31,6 +32,7 @@ class Login extends Component {
         console.log("Login Successful")
         const data = await result.json()
         console.log(data)
+        return this.props.navigate("/criteria")  
     }
 
     handleChange(e) {
@@ -77,4 +79,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default withNavigate(Login)
