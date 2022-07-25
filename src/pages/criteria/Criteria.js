@@ -6,6 +6,8 @@ import downloadicon from "../../assets/img/icons/downlad.svg"
 import previewicon from "../../assets/img/icons/preview.svg"
 import removeicon from "../../assets/img/icons/removefile.svg"
 import editicon from "../../assets/img/icons/edit.svg"
+import Button from "../../components/button/Button"
+import {v4 as uuid} from "uuid"
 export class Criteria extends Component {
 
     constructor(props){
@@ -24,7 +26,36 @@ export class Criteria extends Component {
             {no:3, name:"Criterion 3 : Research, Innovations & Extension"}, {no:4, name:"Criterion 4 : Infrastructure and Learning Resources"},
             {no:5, name:"Criterion 5 : Student Support and Progression"}, {no:6, name:"Criterion 6 :  Governance, Leadership and Management"},
             {no:7, name:"Criterion 7 : Institutional Values and Best Practices"}, {no:8, name:"Criterion 8 : Teaching Learning and Evaluation"}]
-        }    
+        }
+        this.handleDelete = this.handleDelete.bind(this)
+        this.addIndicator = this.addIndicator.bind(this)
+    }
+
+    handleDelete(id) {
+        console.log("delete")
+        if (!window.confirm("Are you sure you want to delete?")) return
+
+        this.setState((prev) => {
+            const newIndicators = prev.indicators.filter(
+                (indicator) => indicator.id !== id
+            )
+            return {
+                ...prev,
+                indicators: newIndicators,
+            }
+        })
+    }
+
+    addIndicator(cno){
+            console.log('added key indicator')
+            let indicator= {name:"untitled", id:uuid(), criteria_no:cno}
+            // this.setState({indicators: this.state.indicators.concat([indicator])})
+            this.setState((prev) => {
+                const newIndicators =[...prev.indicators,indicator]
+                return{
+                    ...prev, indicators:newIndicators,
+                }
+            })
     }
 
     render() {
@@ -40,10 +71,10 @@ export class Criteria extends Component {
                         <div className={styles.criterion}>
                         <div className={styles.criteria_top}>
                             <div className={styles.criteria_title}>
-                            <h1 className={styles.title}>{criteria.name}</h1>
+                                <h1 className={styles.title}>{criteria.name}</h1>
                             </div>
                             <div className={styles.add_key_indicator}>
-                                <button className={styles.add_key_indicator_button}>Add Key Indicator +</button>
+                                <Button color="blue" size="small" onClick={(e) => this.addIndicator(criteria.no)}>Add Key Indicator +</Button>
                             </div>
                         </div>
                         {this.state.indicators.filter(indicator => indicator.criteria_no===criteria.no).map(indicator => {
@@ -66,7 +97,8 @@ export class Criteria extends Component {
                                                     <Link to={`/indicator/${indicator.id}/`}> <img src={editicon} alt="example" /></Link>
                                                 </li>
                                                 <li className={styles.link}>
-                                                    <Link to={`/indicator/${indicator.id}/delete`}> <img src={removeicon} alt="example" /></Link>
+                                                    {/* <Link to={`/indicator/${indicator.id}/delete`}> <img src={removeicon} alt="example" /></Link> */}
+                                                    <button onClick={(e) => this.handleDelete(indicator.id)} className={styles.icon}><img src={removeicon} alt="example" /></button>
                                                 </li>
                                             </ul>
                                     </div>
