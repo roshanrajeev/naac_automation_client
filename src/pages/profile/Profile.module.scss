@@ -1,0 +1,70 @@
+.container {
+    overflow: hidden;
+    margin: 1rem;
+}
+
+.label{
+    display: block;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: #000000;
+}
+
+.inputstyle {
+    display: block;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    border-radius: 0.4rem;
+    width: 100%;
+    height: 4rem;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.8rem;
+}
+
+.submit_button {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1.8rem 4.3rem;
+    background: #ffaa04;
+    border-radius: 0.4rem;
+    color: black;
+    margin-top: 2.5rem;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+}
+
+.Profile_Component{
+    padding: 4rem;
+    width: 60%;
+    margin: 2rem;
+}
+
+.Profile{
+    display: flex;
+    justify-content: space-between;
+}
+
+.img_style{
+    border-radius: 50%;
+    height: 30rem;
+    background-color: grey;
+}
+
+.Image_Component{
+    padding: 4rem;
+    margin: 2rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    align-items: center;
+}
