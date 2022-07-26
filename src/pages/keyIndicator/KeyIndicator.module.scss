@@ -19,5 +19,8 @@
 }
 
 .controlContainer {
-    max-width: 44.4rem;
+    @include mixin.desktop {
+        min-width: 40.4rem;
+    }
+    
 }

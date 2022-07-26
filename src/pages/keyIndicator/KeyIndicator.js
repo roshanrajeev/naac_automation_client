@@ -44,6 +44,16 @@ class KeyIndicator extends Component {
         this.setState({ title, sections })
     }
 
+    getImageDimensions(data) {
+        return new Promise (function (resolved, rejected) {
+            var i = new Image()
+            i.onload = function(){
+                resolved({w: i.width, h: i.height})
+            };
+            i.src = data
+        })
+    }
+
     getNewSection = () => ({
         id: uuid(),
         data: [
@@ -106,7 +116,7 @@ class KeyIndicator extends Component {
         const sectionIdx = this.state.sections.findIndex(
             (section) => section.id == sectionId
         )
-        const item = { id: uuid(), type: "image", src: "" }
+        const item = { id: uuid(), type: "image", src: "", width: 0, height: 0 }
 
         this.setState(
             produce((draftState) => {
@@ -174,10 +184,14 @@ class KeyIndicator extends Component {
         const idx = section.data.findIndex(
             (d) => d.type === "image" && d.id === id
         )
+        
+        const {w, h} = await this.getImageDimensions(dataURL)
 
         this.setState(
             produce((draftState) => {
                 draftState.sections[sectionIdx].data[idx].src = dataURL
+                draftState.sections[sectionIdx].data[idx].width = w
+                draftState.sections[sectionIdx].data[idx].height = h
             })
         )
     }

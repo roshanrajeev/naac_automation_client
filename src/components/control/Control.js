@@ -44,7 +44,7 @@ export class Control extends Component {
                         </Button>
                     </div>
                 </div>
-
+{/* 
                 <div className={styles.controlSection}>
                     <h2 className={styles.heading_1}>Font Family</h2>
                     <Select>
@@ -65,7 +65,7 @@ export class Control extends Component {
                         <option>Bold</option>
                     </select>
                     <button>U</button>
-                </div>
+                </div> */}
             </div>
         )
     }

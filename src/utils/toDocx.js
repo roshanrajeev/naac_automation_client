@@ -7,6 +7,7 @@ import {
     SectionType,
     TextRun,
     UnderlineType,
+    ImageRun
 } from "docx"
 
 const toDocx = async (title, sections) => {
@@ -53,6 +54,19 @@ const toDocx = async (title, sections) => {
                 )
             }
             if (d.type == "image") {
+                doc_sections.push(
+                    new Paragraph({
+                        children: [
+                            new ImageRun({
+                                data: d.src,
+                                transformation: {
+                                    width: 500,
+                                    height: 500 * (d.height / d.width)
+                                }
+                            })
+                        ]
+                    })
+                )
             }
         })
     })
