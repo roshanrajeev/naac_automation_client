@@ -23,6 +23,7 @@ const ProtectedRoute = ({ redirectPath = "/login" }) => {
                 return
             }
             const user = await res.json()
+            user["token"] = token
             setUser(user)
             setLoading(false)
         }

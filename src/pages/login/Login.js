@@ -4,6 +4,7 @@ import styles from "./Login.module.scss"
 import Nav from "../navbar/Navbar"
 import withNavigate from "../../utils/withNavigate"
 import { AuthContext } from "../../auth/authContext"
+import { whoami } from "../../requests/requests"
 
 class Login extends Component {
     static contextType = AuthContext
@@ -39,7 +40,14 @@ class Login extends Component {
         console.log(data)
 
         localStorage.setItem("token", data.token)
-        await setUser(data)
+        const userRes = await whoami(data.token)
+        if(!userRes.ok) {
+            console.log("Not logged in")
+            return
+        }
+        const userData = await userRes.json()
+        userData["token"] = data.token
+        await setUser(userData)
         return this.props.navigate("/criteria")
     }
 

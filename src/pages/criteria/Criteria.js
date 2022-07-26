@@ -8,64 +8,56 @@ import removeicon from "../../assets/img/icons/removefile.svg"
 import editicon from "../../assets/img/icons/edit.svg"
 import Button from "../../components/button/Button"
 import { v4 as uuid } from "uuid"
+import { fetchCriteria, fetchIndicators } from "../../requests/requests"
+import { AuthContext } from "../../auth/authContext"
+import withNavigate from "../../utils/withNavigate"
 export class Criteria extends Component {
+    static contextType = AuthContext
+
     constructor(props) {
         super(props)
         this.state = {
             loading: false,
-            indicators: [
-                { name: "indicator1", id: 12, criteria_no: 1 },
-                { name: "indicator2", id: 23, criteria_no: 1 },
-                { name: "indicator3", id: 34, criteria_no: 2 },
-                { name: "indicator4", id: 45, criteria_no: 2 },
-                { name: "indicator5", id: 12, criteria_no: 3 },
-                { name: "indicator6", id: 23, criteria_no: 3 },
-                { name: "indicator7", id: 34, criteria_no: 4 },
-                { name: "indicator8", id: 45, criteria_no: 4 },
-                { name: "indicator9", id: 12, criteria_no: 5 },
-                { name: "indicator10", id: 23, criteria_no: 5 },
-                { name: "indicator11", id: 34, criteria_no: 6 },
-                { name: "indicator12", id: 45, criteria_no: 6 },
-                { name: "indicator13", id: 12, criteria_no: 7 },
-                { name: "indicator14", id: 23, criteria_no: 7 },
-                { name: "indicator15", id: 34, criteria_no: 8 },
-                { name: "indicator16", id: 45, criteria_no: 8 },
-            ],
-
-            criterias: [
-                { no: 1, name: "Criterion 1 : Curricular Aspects" },
-                {
-                    no: 2,
-                    name: "Criterion 2 : Teaching Learning and Evaluation",
-                },
-                {
-                    no: 3,
-                    name: "Criterion 3 : Research, Innovations & Extension",
-                },
-                {
-                    no: 4,
-                    name: "Criterion 4 : Infrastructure and Learning Resources",
-                },
-                {
-                    no: 5,
-                    name: "Criterion 5 : Student Support and Progression",
-                },
-                {
-                    no: 6,
-                    name: "Criterion 6 :  Governance, Leadership and Management",
-                },
-                {
-                    no: 7,
-                    name: "Criterion 7 : Institutional Values and Best Practices",
-                },
-                {
-                    no: 8,
-                    name: "Criterion 8 : Teaching Learning and Evaluation",
-                },
-            ],
+            indicators: [],
+            criterias: [],
         }
         this.handleDelete = this.handleDelete.bind(this)
         this.addIndicator = this.addIndicator.bind(this)
+    }
+
+    componentDidMount() {
+        const asyncFunc = async () => {
+            const {user, setUser} = this.context
+            const res = await fetchCriteria(user.token)
+            if(!res.ok) {
+                console.log("Couldn't fetch criteria")
+                return
+            }
+            const criteria = await res.json()
+            // console.log({criteria})
+
+            this.setState({criterias: criteria})
+
+            let allIndicators = []
+            criteria.forEach(async (c) => {
+                const res = await fetchIndicators(user.token, c.id)
+                if(res.ok) {
+                    const indicators = await res.json()
+
+                    indicators.forEach(indicator => {
+                        const ind = {...indicator,criteria_id: c.id}
+                        allIndicators.push(ind)
+                    })
+                    // console.log(indicators)
+                }
+            })
+            setTimeout(() => {
+                const newarr = [...{allIndicators}.allIndicators]
+                console.log(newarr, newarr.length)
+                this.setState({indicators: newarr})
+            }, 100)
+        }
+        asyncFunc()
     }
 
     handleDelete(id) {
@@ -85,7 +77,9 @@ export class Criteria extends Component {
 
     addIndicator(cno) {
         console.log("added key indicator")
-        let indicator = { name: "untitled", id: uuid(), criteria_no: cno }
+        const name = prompt("Enter name of indicator")
+        if(!name) return
+        let indicator = { name, id: uuid(), criteria_id: cno }
         // this.setState({indicators: this.state.indicators.concat([indicator])})
         this.setState((prev) => {
             const newIndicators = [...prev.indicators, indicator]
@@ -104,9 +98,9 @@ export class Criteria extends Component {
                     <div>Loading...</div>
                 ) : (
                     <div className={styles.criterias}>
+                        <div className="container">
                         <h1 className={styles.heading}>Criteria</h1>
                         {this.state.criterias.map((criteria) => {
-                            let i = 0
                             return (
                                 <div className={styles.criterion}>
                                     <div className={styles.criteria_top}>
@@ -123,7 +117,7 @@ export class Criteria extends Component {
                                                 size="small"
                                                 onClick={(e) =>
                                                     this.addIndicator(
-                                                        criteria.no
+                                                        criteria.id
                                                     )
                                                 }
                                             >
@@ -131,14 +125,9 @@ export class Criteria extends Component {
                                             </Button>
                                         </div>
                                     </div>
-                                    {this.state.indicators
-                                        .filter(
-                                            (indicator) =>
-                                                indicator.criteria_no ===
-                                                criteria.no
-                                        )
+                                    {this.state.indicators.filter((indicator) => {console.log(indicator); return indicator.criteria_id == criteria.id})
                                         .map((indicator) => {
-                                            i = i + 1
+                                            console.log(JSON.stringify(indicator))
                                             return (
                                                 <div
                                                     className={styles.indicator}
@@ -153,7 +142,6 @@ export class Criteria extends Component {
                                                                 styles.indicator_heading
                                                             }
                                                         >
-                                                            <h1>[{i}]</h1>
                                                             <h1>
                                                                 <Link
                                                                     className={
@@ -254,11 +242,10 @@ export class Criteria extends Component {
                                                 </div>
                                             )
                                         })}
-                                    ;
                                 </div>
                             )
                         })}
-                        ;
+                        </div>
                     </div>
                 )}
             </div>
@@ -266,4 +253,4 @@ export class Criteria extends Component {
     }
 }
 
-export default Criteria
+export default withNavigate(Criteria)
