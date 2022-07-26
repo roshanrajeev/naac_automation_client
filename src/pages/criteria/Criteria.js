@@ -55,7 +55,7 @@ export class Criteria extends Component {
                 const newarr = [...{allIndicators}.allIndicators]
                 console.log(newarr, newarr.length)
                 this.setState({indicators: newarr})
-            }, 100)
+            }, 1000)
         }
         asyncFunc()
     }
