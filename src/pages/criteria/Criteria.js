@@ -11,13 +11,14 @@ import { v4 as uuid } from "uuid"
 import { fetchCriteria, fetchIndicators } from "../../requests/requests"
 import { AuthContext } from "../../auth/authContext"
 import withNavigate from "../../utils/withNavigate"
+import Loader from "../../assets/img/icons/Book.gif"
 export class Criteria extends Component {
     static contextType = AuthContext
 
     constructor(props) {
         super(props)
         this.state = {
-            loading: false,
+            loading: true,
             indicators: [],
             criterias: [],
         }
@@ -55,6 +56,7 @@ export class Criteria extends Component {
                 const newarr = [...{allIndicators}.allIndicators]
                 console.log(newarr, newarr.length)
                 this.setState({indicators: newarr})
+                this.setState({loading: false})
             }, 1000)
         }
         asyncFunc()
@@ -95,7 +97,16 @@ export class Criteria extends Component {
             <div className={styles.container}>
                 <Header />
                 {this.state.loading ? (
-                    <div>Loading...</div>
+                    <div
+                        style={{
+                            minHeight: "80vh",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <img src={Loader} />
+                    </div>
                 ) : (
                     <div className={styles.criterias}>
                         <div className="container">
@@ -108,21 +119,6 @@ export class Criteria extends Component {
                                             <h1 className={styles.title}>
                                                 {criteria.name}
                                             </h1>
-                                        </div>
-                                        <div
-                                            className={styles.add_key_indicator}
-                                        >
-                                            <Button
-                                                color="blue"
-                                                size="small"
-                                                onClick={(e) =>
-                                                    this.addIndicator(
-                                                        criteria.id
-                                                    )
-                                                }
-                                            >
-                                                Add Key Indicator +
-                                            </Button>
                                         </div>
                                     </div>
                                     {this.state.indicators.filter((indicator) => {console.log(indicator); return indicator.criteria_id == criteria.id})
