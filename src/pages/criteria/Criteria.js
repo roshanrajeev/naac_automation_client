@@ -207,32 +207,6 @@ export class Criteria extends Component {
                                                                     />
                                                                 </Link>
                                                             </li>
-                                                            <li
-                                                                className={
-                                                                    styles.link
-                                                                }
-                                                            >
-                                                                {/* <Link to={`/indicator/${indicator.id}/delete`}> <img src={removeicon} alt="example" /></Link> */}
-                                                                <button
-                                                                    onClick={(
-                                                                        e
-                                                                    ) =>
-                                                                        this.handleDelete(
-                                                                            indicator.id
-                                                                        )
-                                                                    }
-                                                                    className={
-                                                                        styles.icon
-                                                                    }
-                                                                >
-                                                                    <img
-                                                                        src={
-                                                                            removeicon
-                                                                        }
-                                                                        alt="example"
-                                                                    />
-                                                                </button>
-                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>

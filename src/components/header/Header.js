@@ -11,13 +11,10 @@ class Header extends Component {
                     <h1 className={styles.title}>NAAC Automation</h1>
                     <ul className={styles.links}>
                         <li className={styles.link}>
-                            <Link to="#">Home</Link>
+                            <Link to="/">Home</Link>
                         </li>
                         <li className={styles.link}>
                             <Link to="/criteria">Criteria</Link>
-                        </li>
-                        <li className={styles.link}>
-                            <Link to="#">Profile</Link>
                         </li>
                         <li>
                             <Button size="medium" type="outlined" color="#fff">
