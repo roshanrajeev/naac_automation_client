@@ -15,13 +15,25 @@ export class Control extends Component {
                 <div className={styles.buttonsSection}>
                     <div className={styles.buttonsRow}>
                         <div className={styles.buttonContainer}>
-                            <Button
-                                color={variables.color_yellow}
-                                size="large"
-                                onClick={this.props.saveDoc}
-                            >
-                                Save
-                            </Button>
+                            {
+                                (!this.props.saved) ? 
+                                <Button
+                                    color={variables.color_yellow}
+                                    size="large"
+                                    onClick={this.props.saveDoc}
+                                >
+                                    Save
+                                </Button>
+                                : 
+                                <Button
+                                    color={variables.color_grey_medium}
+                                    size="large"
+                                    onClick={this.props.saveDoc}
+                                    disabled={true}
+                                >
+                                    Save
+                                </Button>
+                            }
                         </div>
                         <div className={styles.buttonContainer}>
                             <Button
@@ -44,28 +56,6 @@ export class Control extends Component {
                         </Button>
                     </div>
                 </div>
-{/* 
-                <div className={styles.controlSection}>
-                    <h2 className={styles.heading_1}>Font Family</h2>
-                    <Select>
-                        <Option
-                            name="Times New Roman"
-                            value="times-new-roman"
-                        />
-                        <Option name="Arial" value="arial" />
-                    </Select>
-                </div>
-
-                <div className={styles.controlSection}>
-                    <h2 className={styles.heading_1}>Margin</h2>
-                    <input type="text" />
-                    <select>
-                        <option>Regular</option>
-                        <option>Medium</option>
-                        <option>Bold</option>
-                    </select>
-                    <button>U</button>
-                </div> */}
             </div>
         )
     }

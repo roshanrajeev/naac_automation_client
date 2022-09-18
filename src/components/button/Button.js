@@ -39,6 +39,7 @@ export class Button extends Component {
             href = "",
             onSubmit = () => {},
             onClick = () => {},
+            disabled = false
         } = this.props
         const { hovered } = this.state
 
@@ -70,6 +71,7 @@ export class Button extends Component {
                         onMouseLeave={this.handleMouseLeave}
                         onSubmit={onSubmit}
                         onClick={onClick}
+                        disabled={disabled}
                     >
                         {this.props.children}
                     </button>

@@ -23,6 +23,7 @@ class KeyIndicator extends Component {
         this.state = {
             title: "",
             sections: [],
+            saved: true
         }
 
         this.handleDocDownload = this.handleDocDownload.bind(this)
@@ -81,12 +82,14 @@ class KeyIndicator extends Component {
                 sections: this.state.sections,
             })
         )
+        this.setState({saved: true})
     }
 
     handleDocPreview() {}
 
     handleSectionAdd(id) {
         console.log("section adding..")
+
         const idx = this.state.sections.findIndex(
             (section) => section.id === id
         )
@@ -100,6 +103,8 @@ class KeyIndicator extends Component {
                 sections: newSections,
             }
         })
+
+        this.setState({saved: false})
     }
 
     handleSectionDelete(id) {
@@ -114,6 +119,8 @@ class KeyIndicator extends Component {
                 sections: newSections,
             }
         })
+
+        this.setState({saved: false})
     }
 
     handleImageAdd(e, sectionId) {
@@ -127,6 +134,8 @@ class KeyIndicator extends Component {
                 draftState.sections[sectionIdx].data.push(item)
             })
         )
+
+        this.setState({saved: false})
     }
 
     handleParagraphAdd(e, sectionId) {
@@ -140,6 +149,8 @@ class KeyIndicator extends Component {
                 draftState.sections[sectionIdx].data.push(item)
             })
         )
+
+        this.setState({saved: false})
     }
 
     handleTextChange(e, sectionId, type, id = null) {
@@ -161,6 +172,8 @@ class KeyIndicator extends Component {
                 draftState.sections[sectionIdx].data[idx].value = e.target.value
             })
         )
+
+        this.setState({saved: false})
     }
 
     async handleImageChange(e, id, sectionId) {
@@ -207,10 +220,14 @@ class KeyIndicator extends Component {
                 draftState.sections[sectionIdx].data[idx].height = h
             })
         )
+
+        this.setState({saved: false})
     }
 
     handleTitleChange(e) {
         this.setState({ title: e.target.value })
+
+        this.setState({saved: false})
     }
 
     render() {
@@ -240,6 +257,7 @@ class KeyIndicator extends Component {
                                     downloadDoc={this.handleDocDownload}
                                     saveDoc={this.handleDocSave}
                                     id={this.props.params.id}
+                                    saved={this.state.saved}
                                 />
                             </div>
                         </div>
