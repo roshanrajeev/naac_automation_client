@@ -1,6 +1,9 @@
+
+@use "../../assets/styles/mixins.scss" as mixin;
+
 .container {
     overflow: hidden;
-    margin-top: 2rem;
+    margin-top: mixin.$header-space-top;
     align-items: center;
 }
 

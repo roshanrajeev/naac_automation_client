@@ -7,7 +7,7 @@ import { renderAsync } from "docx-preview"
 import Button from "../../components/button/Button"
 import variables from "../../assets/styles/mixins.scss"
 import "./Preview.scss"
-
+import { Link } from "react-router-dom"
 export class Preview extends Component {
     constructor(props) {
         super(props)
@@ -36,6 +36,9 @@ export class Preview extends Component {
                     <Header />
                 </div>
                 <div className="container">
+                    <div className={styles.navigationLink}>
+                        <Link to={`/indicator/${this.props.params.id}`}>&#8592; Back to Editor</Link>
+                    </div>
                     <div className={styles.topBarContainer}>
                         <h1 className={styles.title}>Main Heading</h1>
                         <Button

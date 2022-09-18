@@ -1,8 +1,24 @@
+@use "../../assets/styles/mixins.scss" as mixin;
+
 .headerContainer {
-    margin-bottom: 5.4rem;
+    margin-top: mixin.$header-space-top;
 }
 
 .topBarContainer {
     display: flex;
     justify-content: space-between;
+}
+
+.navigationLink {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    a {
+        text-decoration: none;
+        color: grey;
+
+        &:hover {
+            color: black;
+        }
+    }
 }
