@@ -40,3 +40,17 @@ export const enhanceImage = async (token, base64Image) => {
         })
     })
 }
+
+export const saveDocument = async (token, indicatorId, data) => {
+    return await fetch(baseUrl + "/document/create/", {
+        method: "POST",
+        headers: {
+            Authorization: "Token " + token,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            indicator_id: indicatorId,
+            content: JSON.stringify(data)
+        })
+    })
+}

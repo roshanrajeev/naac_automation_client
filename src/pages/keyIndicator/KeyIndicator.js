@@ -11,7 +11,7 @@ import Editor from "../../components/editor2/Editor"
 import styles from "./KeyIndicator.module.scss"
 import toDocx from "../../utils/toDocx"
 import withRouter from "../../utils/withRouter"
-import { enhanceImage } from '../../requests/requests'
+import { enhanceImage, saveDocument } from '../../requests/requests'
 import { AuthContext } from "../../auth/authContext"
 
 class KeyIndicator extends Component {
@@ -73,8 +73,22 @@ class KeyIndicator extends Component {
         saveAs(blob, "file.docx")
     }
 
-    handleDocSave() {
+    async handleDocSave() {
         console.log("saving...")
+        const { user } = this.context
+
+        const saveResponse = await saveDocument(user.token, this.props.params.id, {
+            title: this.state.title,
+            sections: this.state.sections,
+        })
+
+        if(!saveResponse.ok) {
+            const json = await saveResponse.json()
+            console.log(json)
+            alert("Couldn't save changes. Try again.")
+            return
+        }
+
         window.localStorage.setItem(
             this.props.params.id,
             JSON.stringify({
@@ -83,6 +97,7 @@ class KeyIndicator extends Component {
             })
         )
         this.setState({saved: true})
+
     }
 
     handleDocPreview() {}
