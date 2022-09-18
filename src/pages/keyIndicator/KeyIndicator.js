@@ -11,8 +11,12 @@ import Editor from "../../components/editor2/Editor"
 import styles from "./KeyIndicator.module.scss"
 import toDocx from "../../utils/toDocx"
 import withRouter from "../../utils/withRouter"
+import { enhanceImage } from '../../requests/requests'
+import { AuthContext } from "../../auth/authContext"
 
 class KeyIndicator extends Component {
+    static contextType = AuthContext
+
     constructor(props) {
         super(props)
 
@@ -160,6 +164,8 @@ class KeyIndicator extends Component {
     }
 
     async handleImageChange(e, id, sectionId) {
+        const { user } = this.context
+
         const file = e.target.files[0]
         if (!file) return
         console.log("Size: " + file.size / 1024 / 1024 + "MB")
@@ -175,6 +181,13 @@ class KeyIndicator extends Component {
         const dataURL = await imageCompression.getDataUrlFromFile(
             compressedFile
         )
+
+        const enchanceResponse = await enhanceImage(user.token, dataURL.replace("data:", "").replace(/^.+,/, ""))
+        if(!enchanceResponse.ok) {
+            if(!window.confirm("Image is blurry. Do you wish to insert this image?")) {
+                return
+            }
+        }
 
         const sectionIdx = this.state.sections.findIndex(
             (section) => section.id == sectionId

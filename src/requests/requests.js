@@ -27,3 +27,16 @@ export const fetchIndicators = async (token, criteria_id) => {
         }
     })
 }
+
+export const enhanceImage = async (token, base64Image) => {
+    return await fetch(baseUrl + "/validate-image/", {
+        method: "POST",
+        headers: {
+            Authorization: "Token " + token,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            image: base64Image
+        })
+    })
+}
