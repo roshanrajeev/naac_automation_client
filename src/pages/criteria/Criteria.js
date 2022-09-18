@@ -11,7 +11,7 @@ import { v4 as uuid } from "uuid"
 import { fetchCriteria, fetchIndicators } from "../../requests/requests"
 import { AuthContext } from "../../auth/authContext"
 import withNavigate from "../../utils/withNavigate"
-import Loader from "../../assets/img/icons/Book.gif"
+import Loader from "../../assets/img/icons/Loader.gif"
 export class Criteria extends Component {
     static contextType = AuthContext
 
@@ -105,7 +105,7 @@ export class Criteria extends Component {
                             justifyContent: "center",
                         }}
                     >
-                        <img src={Loader} />
+                        <img src={Loader} style={{height: "6.2rem"}}/>
                     </div>
                 ) : (
                     <div className={styles.criterias}>
